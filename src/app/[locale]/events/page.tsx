@@ -3,9 +3,14 @@ import { getEvents } from "@/data/events";
 import { copy } from "@/lib/copy";
 import { Locale } from "@/lib/i18n";
 
-export default function EventsPage({ params }: { params: { locale: Locale } }) {
-  const t = copy[params.locale];
-  const events = getEvents(params.locale);
+export default async function EventsPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = copy[locale];
+  const events = getEvents(locale);
 
   return (
     <div className="space-y-10">

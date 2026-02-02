@@ -3,24 +3,26 @@ import SiteHeader from "@/components/SiteHeader";
 import { copy } from "@/lib/copy";
 import { isLocale, Locale } from "@/lib/i18n";
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  if (!isLocale(params.locale)) {
+  const { locale } = await params;
+
+  if (!isLocale(locale)) {
     notFound();
   }
 
-  const locale = params.locale as Locale;
-  const t = copy[locale];
+  const safeLocale = locale as Locale;
+  const t = copy[safeLocale];
 
   return (
     <div className="min-h-screen bg-slate-950 text-white">
       <SiteHeader
-        locale={locale}
+        locale={safeLocale}
         siteName={t.siteName}
         headerTagline={t.headerTagline}
         introLabel={t.nav.intro}

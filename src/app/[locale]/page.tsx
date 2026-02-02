@@ -3,13 +3,14 @@ import { getTeamMembers } from "@/data/team";
 import { copy } from "@/lib/copy";
 import { Locale } from "@/lib/i18n";
 
-export default function IntroductionPage({
+export default async function IntroductionPage({
   params,
 }: {
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }) {
-  const t = copy[params.locale];
-  const members = getTeamMembers(params.locale);
+  const { locale } = await params;
+  const t = copy[locale];
+  const members = getTeamMembers(locale);
 
   return (
     <div className="space-y-16">
