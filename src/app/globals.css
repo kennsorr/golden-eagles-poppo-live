@@ -24,3 +24,91 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
 }
+
+.sparkle-gradient {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255, 199, 0, 0.35), transparent 45%),
+    radial-gradient(circle at 80% 10%, rgba(255, 95, 213, 0.35), transparent 50%),
+    radial-gradient(circle at 70% 85%, rgba(107, 102, 255, 0.35), transparent 55%),
+    radial-gradient(circle at 20% 80%, rgba(80, 252, 255, 0.3), transparent 50%),
+    linear-gradient(160deg, rgba(10, 10, 30, 0.9), rgba(30, 10, 60, 0.9));
+  animation: glowShift 16s ease-in-out infinite alternate;
+}
+
+.sparkle-field {
+  position: relative;
+}
+
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #fff, rgba(255, 255, 255, 0));
+  opacity: 0.8;
+  animation: sparkleFloat 8s ease-in-out infinite;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+}
+
+.sparkle-1 {
+  top: 12%;
+  left: 18%;
+  animation-delay: 0s;
+  transform: scale(1.3);
+}
+
+.sparkle-2 {
+  top: 25%;
+  right: 15%;
+  animation-delay: 1.5s;
+}
+
+.sparkle-3 {
+  bottom: 30%;
+  left: 10%;
+  animation-delay: 0.8s;
+}
+
+.sparkle-4 {
+  bottom: 20%;
+  right: 12%;
+  animation-delay: 2.2s;
+  transform: scale(1.1);
+}
+
+.sparkle-5 {
+  top: 55%;
+  left: 50%;
+  animation-delay: 1s;
+  transform: scale(1.5);
+}
+
+.sparkle-6 {
+  top: 70%;
+  right: 35%;
+  animation-delay: 0.4s;
+}
+
+@keyframes sparkleFloat {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-12px) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes glowShift {
+  0% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  100% {
+    filter: hue-rotate(18deg) brightness(1.15);
+  }
+}
