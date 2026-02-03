@@ -12,7 +12,7 @@ const membersByLocale: Record<Locale, TeamMember[]> = {
     {
       name: "Gui Oliver",
       role: "Owner",
-      photoUrl: "https://placehold.co/320x320/png?text=Gui+Oliver",
+      photoUrl: "/images/team/gui.jpg",
     },
     {
       name: "Lucia",
@@ -49,7 +49,7 @@ const membersByLocale: Record<Locale, TeamMember[]> = {
     {
       name: "Gui Oliver",
       role: "Dono",
-      photoUrl: "https://placehold.co/320x320/png?text=Gui+Oliver",
+      photoUrl: "/images/team/gui.jpg",
     },
     {
       name: "Lucia",
