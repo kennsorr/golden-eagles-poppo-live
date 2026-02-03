@@ -172,7 +172,7 @@ body {
 }
 
 .page-fade {
-  animation: pageFadeIn 400ms ease;
+  animation: pageFadeIn 450ms ease, pageGlow 700ms ease;
 }
 
 @keyframes pageFadeIn {
@@ -183,6 +183,15 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes pageGlow {
+  0% {
+    filter: brightness(0.9);
+  }
+  100% {
+    filter: brightness(1);
   }
 }
 

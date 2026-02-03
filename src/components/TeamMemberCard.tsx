@@ -33,8 +33,10 @@ export default function TeamMemberCard({
             />
             <div className="team-nameplate">{member.name}</div>
           </div>
-          <div className="mt-3 space-y-1 text-center">
-            <p className="text-sm text-white/70">{member.role}</p>
+          <div className="mt-2 space-y-1 text-center">
+            <p className="text-base font-semibold text-white/80">
+              {member.role}
+            </p>
           </div>
         </a>
       ) : (
@@ -53,8 +55,10 @@ export default function TeamMemberCard({
             />
             <div className="team-nameplate">{member.name}</div>
           </div>
-          <div className="mt-3 space-y-1 text-center">
-            <p className="text-sm text-white/70">{member.role}</p>
+          <div className="mt-2 space-y-1 text-center">
+            <p className="text-base font-semibold text-white/80">
+              {member.role}
+            </p>
           </div>
         </div>
       )}

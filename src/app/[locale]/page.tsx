@@ -55,7 +55,7 @@ export default async function IntroductionPage({
           </a>
         </div>
         <div className="rounded-3xl border border-amber-200/20 bg-gradient-to-br from-amber-400/20 via-slate-900/70 to-slate-900/40 p-8 shadow-lg shadow-black/30">
-          <p className="text-sm uppercase tracking-[0.2em] text-amber-200/80">
+          <p className="text-sm uppercase tracking-[0.2em] text-amber-200/80 whitespace-nowrap">
             Golden Eagles
           </p>
           <h2 className="mt-3 text-2xl font-semibold text-white">
