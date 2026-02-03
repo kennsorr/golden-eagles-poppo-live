@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Golden Eagles | Poppo Live Team",
+  title: "Golden Eagles | Poppo Live Agency",
   description:
-    "Golden Eagles is a Poppo Live team focused on community, events, and fun.",
+    "Golden Eagles is a Poppo Live agency focused on community, events, and fun.",
 };
 
 export default function RootLayout({

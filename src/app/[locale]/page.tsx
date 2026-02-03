@@ -23,6 +23,36 @@ export default async function IntroductionPage({
             {t.hero.title}
           </h1>
           <p className="text-lg text-white/70">{t.hero.body}</p>
+          <a
+            href="https://www.poppo.com/@22071637"
+            target="_blank"
+            rel="noreferrer"
+            className="go-live-button inline-flex items-center gap-3 rounded-full border border-amber-200/40 bg-gradient-to-r from-amber-400/20 via-amber-300/10 to-pink-400/20 px-5 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-amber-100 shadow-lg shadow-amber-400/20 transition hover:border-amber-200/70 hover:text-white cursor-[alias]"
+          >
+            <span className="flex h-8 w-8 items-center justify-center">
+              <img
+                src="/images/poppo-logo.png"
+                alt="Poppo Live"
+                className="h-5 w-5 object-contain"
+              />
+            </span>
+            <span className="go-live-text">GO LIVE</span>
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M7 17L17 7" />
+                <path d="M9 7h8v8" />
+              </svg>
+            </span>
+          </a>
         </div>
         <div className="rounded-3xl border border-amber-200/20 bg-gradient-to-br from-amber-400/20 via-slate-900/70 to-slate-900/40 p-8 shadow-lg shadow-black/30">
           <p className="text-sm uppercase tracking-[0.2em] text-amber-200/80">
@@ -49,7 +79,6 @@ export default async function IntroductionPage({
             <TeamMemberCard
               key={member.name}
               member={member}
-              whatsappLabel={t.labels.whatsapp}
             />
           ))}
         </div>

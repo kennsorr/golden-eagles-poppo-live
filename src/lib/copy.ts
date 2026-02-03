@@ -28,14 +28,14 @@ export const copy: Record<
 > = {
   en: {
     siteName: "Golden Eagles",
-    headerTagline: "Poppo Live Team",
+    headerTagline: "Poppo Live Agency",
     nav: { intro: "Introduction", events: "Events" },
     hero: {
-      badge: "Poppo Live Team",
+      badge: "Poppo Live Agency",
       title: "Welcome to Golden Eagles",
       body:
-        "Golden Eagles is a Poppo Live team built for streamers, battlers, and friends who love to connect. We host events, celebrate talent, and keep the vibe fun and welcoming.",
-      highlightTitle: "Meet the team that keeps the energy soaring.",
+        "Golden Eagles is a Poppo Live agency built for streamers, battlers, and friends who love to connect. We host events, celebrate talent, and keep the vibe fun and welcoming.",
+      highlightTitle: "Meet the agency that keeps the energy soaring.",
       highlightBody:
         "Community chats, themed battles, and live events are at the heart of what we do.",
     },
@@ -51,19 +51,19 @@ export const copy: Record<
       administrationBlurb: "A fun crew of organizers, planners, and hype-makers.",
     },
     footer: {
-      tagline: "A Poppo Live team led by Gui Oliver.",
+      tagline: "A Poppo Live agency led by Gui Oliver.",
     },
   },
   "pt-br": {
     siteName: "Golden Eagles",
-    headerTagline: "Time do Poppo Live",
+    headerTagline: "Agência Poppo Live",
     nav: { intro: "Introdução", events: "Eventos" },
     hero: {
-      badge: "Time do Poppo Live",
+      badge: "Agência Poppo Live",
       title: "Bem-vindo à Golden Eagles",
       body:
-        "Golden Eagles é um time do Poppo Live feito para streamers, batalhas e amizades. Organizamos eventos, valorizamos talentos e mantemos o clima leve e divertido.",
-      highlightTitle: "Conheça o time que mantém a energia lá no alto.",
+        "Golden Eagles é uma agência do Poppo Live feita para streamers, batalhas e amizades. Organizamos eventos, valorizamos talentos e mantemos o clima leve e divertido.",
+      highlightTitle: "Conheça a agência que mantém a energia lá no alto.",
       highlightBody:
         "Bate-papos, batalhas temáticas e eventos ao vivo fazem parte do nosso dia a dia.",
     },
@@ -80,7 +80,7 @@ export const copy: Record<
         "Um time divertido de organizadores, planejadores e animadores.",
     },
     footer: {
-      tagline: "Um time do Poppo Live liderado por Gui Oliver.",
+      tagline: "Uma agência do Poppo Live liderada por Gui Oliver.",
     },
   },
 };

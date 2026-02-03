@@ -31,7 +31,7 @@ export default function SiteHeader({
             <p className="text-lg font-semibold text-white">{siteName}</p>
           </div>
         </div>
-        <nav className="hidden items-center gap-6 text-sm font-semibold text-white/80 md:flex">
+        <nav className="hidden items-center gap-6 text-lg font-semibold text-white/85 md:flex">
           <Link
             href={`/${locale}`}
             className="transition hover:text-amber-200"

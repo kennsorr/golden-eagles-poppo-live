@@ -30,7 +30,7 @@ export default async function LocaleLayout({
         introLabel={t.nav.intro}
         eventsLabel={t.nav.events}
       />
-      <main className="relative mx-auto w-full max-w-6xl px-6 py-12">
+      <main className="relative mx-auto w-full max-w-6xl px-6 py-12 page-fade">
         {children}
       </main>
       <footer className="relative border-t border-white/10 py-8">
