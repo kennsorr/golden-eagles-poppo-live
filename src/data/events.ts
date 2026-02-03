@@ -6,6 +6,7 @@ export type EventItem = {
   category: string;
   host: string;
   guest?: string;
+  description?: string;
 };
 
 const eventsByLocale: Record<Locale, EventItem[]> = {
@@ -16,6 +17,7 @@ const eventsByLocale: Record<Locale, EventItem[]> = {
       category: "Battle",
       host: "Gui Oliver",
       guest: "Special Guest",
+      description: "High-energy PK rounds with spotlight creators.",
     },
     {
       title: "Coffee & Chat",
@@ -38,6 +40,7 @@ const eventsByLocale: Record<Locale, EventItem[]> = {
       category: "Batalha",
       host: "Gui Oliver",
       guest: "Convidado Especial",
+      description: "Rodadas de PK com criadores em destaque.",
     },
     {
       title: "Café e Conversa",

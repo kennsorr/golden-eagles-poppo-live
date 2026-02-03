@@ -35,6 +35,9 @@ export default function EventCard({ event, labels }: EventCardProps) {
             {event.guest}
           </div>
         ) : null}
+        {event.description ? (
+          <p className="text-sm text-white/70">{event.description}</p>
+        ) : null}
       </div>
     </article>
   );

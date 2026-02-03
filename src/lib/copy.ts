@@ -34,7 +34,7 @@ export const copy: Record<
       badge: "Poppo Live Agency",
       title: "Welcome to Golden Eagles",
       body:
-        "Golden Eagles is a Poppo Live agency built for streamers, battlers, and friends who love to connect. We host events, celebrate talent, and keep the vibe fun and welcoming.",
+        "Golden Eagles is a Poppo Live agency built for streamers, PK, and friends who love to connect. We host events, celebrate talent, and keep the vibe fun and welcoming.",
       highlightTitle: "Meet the agency that keeps the energy soaring.",
       highlightBody:
         "Community chats, themed battles, and live events are at the heart of what we do.",
@@ -62,7 +62,7 @@ export const copy: Record<
       badge: "Agência Poppo Live",
       title: "Bem-vindo à Golden Eagles",
       body:
-        "Golden Eagles é uma agência do Poppo Live feita para streamers, batalhas e amizades. Organizamos eventos, valorizamos talentos e mantemos o clima leve e divertido.",
+        "Golden Eagles é uma agência do Poppo Live feita para streamers, PK e amizades. Organizamos eventos, valorizamos talentos e mantemos o clima leve e divertido.",
       highlightTitle: "Conheça a agência que mantém a energia lá no alto.",
       highlightBody:
         "Bate-papos, batalhas temáticas e eventos ao vivo fazem parte do nosso dia a dia.",

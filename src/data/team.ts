@@ -13,6 +13,7 @@ const membersByLocale: Record<Locale, TeamMember[]> = {
       name: "Gui Oliver",
       role: "Owner",
       photoUrl: "/images/team/gui.jpg",
+      poppoUrl: "https://www.poppo.com/@26062585",
     },
     {
       name: "Lucia",
@@ -50,6 +51,7 @@ const membersByLocale: Record<Locale, TeamMember[]> = {
       name: "Gui Oliver",
       role: "Dono",
       photoUrl: "/images/team/gui.jpg",
+      poppoUrl: "https://www.poppo.com/@26062585",
     },
     {
       name: "Lucia",

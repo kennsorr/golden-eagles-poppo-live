@@ -33,7 +33,7 @@ export default function TeamMemberCard({
             />
             <div className="team-nameplate">{member.name}</div>
           </div>
-          <div className="mt-2 space-y-1 text-center">
+          <div className="space-y-1 text-center">
             <p className="text-base font-semibold text-white/80">
               {member.role}
             </p>
@@ -55,7 +55,7 @@ export default function TeamMemberCard({
             />
             <div className="team-nameplate">{member.name}</div>
           </div>
-          <div className="mt-2 space-y-1 text-center">
+          <div className="space-y-1 text-center">
             <p className="text-base font-semibold text-white/80">
               {member.role}
             </p>
