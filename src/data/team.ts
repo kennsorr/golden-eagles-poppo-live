@@ -41,7 +41,7 @@ const membersByLocale: Record<Locale, TeamMember[]> = {
     {
       name: "Elaine",
       role: "Admin",
-      photoUrl: "https://placehold.co/320x320/png?text=Elaine",
+      photoUrl: "/images/team/elaine.jpeg",
       poppoUrl: "https://www.poppo.com/@22611367",
     },
   ],
@@ -78,7 +78,7 @@ const membersByLocale: Record<Locale, TeamMember[]> = {
     {
       name: "Elaine",
       role: "Admin",
-      photoUrl: "https://placehold.co/320x320/png?text=Elaine",
+      photoUrl: "/images/team/elaine.jpeg",
       poppoUrl: "https://www.poppo.com/@22611367",
     },
   ],

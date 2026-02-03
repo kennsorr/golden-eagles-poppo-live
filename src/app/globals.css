@@ -32,7 +32,10 @@ body {
     radial-gradient(circle at 70% 85%, rgba(107, 102, 255, 0.35), transparent 55%),
     radial-gradient(circle at 20% 80%, rgba(80, 252, 255, 0.3), transparent 50%),
     linear-gradient(160deg, rgba(10, 10, 30, 0.9), rgba(30, 10, 60, 0.9));
-  animation: glowShift 18s ease-in-out infinite alternate;
+  background-size: 140% 140%;
+  animation:
+    glowShift 8s ease-in-out infinite alternate,
+    gradientDrift 9s ease-in-out infinite alternate;
 }
 
 .sparkle-field {
@@ -153,6 +156,18 @@ body {
   }
   100% {
     filter: hue-rotate(18deg) brightness(1.15);
+  }
+}
+
+@keyframes gradientDrift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 45%;
+  }
+  100% {
+    background-position: 0% 100%;
   }
 }
 
