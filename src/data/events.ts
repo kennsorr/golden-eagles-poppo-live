@@ -1,12 +1,14 @@
 import { Locale } from "@/lib/i18n";
 
 export type EventItem = {
+  id?: number;
   title: string;
   time: string;
   category: string;
   host: string;
   guest?: string;
   description?: string;
+  imageUrl?: string;
 };
 
 const eventsByLocale: Record<Locale, EventItem[]> = {

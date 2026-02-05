@@ -2,6 +2,7 @@ import { EventItem } from "@/data/events";
 
 type EventCardProps = {
   event: EventItem;
+  locale: string;
   labels: {
     time: string;
     category: string;
@@ -10,14 +11,40 @@ type EventCardProps = {
   };
 };
 
-export default function EventCard({ event, labels }: EventCardProps) {
+function formatEventTime(value: string, locale: string) {
+  if (!value) {
+    return "";
+  }
+
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+
+  return new Intl.DateTimeFormat(locale, {
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(date);
+}
+
+export default function EventCard({ event, locale, labels }: EventCardProps) {
+  const formattedTime = formatEventTime(event.time, locale);
+
   return (
-    <article className="rounded-3xl border border-white/10 bg-slate-900/60 p-6 shadow-lg shadow-black/20">
-      <div className="flex flex-col gap-2">
+    <article className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 shadow-lg shadow-black/20">
+      {event.imageUrl ? (
+        <img
+          src={event.imageUrl}
+          alt={event.title}
+          className="h-44 w-full object-cover"
+          loading="lazy"
+        />
+      ) : null}
+      <div className="flex flex-col gap-2 p-6">
         <h3 className="text-xl font-semibold text-white">{event.title}</h3>
         <div className="text-sm text-white/70">
           <span className="font-semibold text-white/80">{labels.time}:</span>{" "}
-          {event.time}
+          {formattedTime || event.time}
         </div>
         <div className="text-sm text-white/70">
           <span className="font-semibold text-white/80">
