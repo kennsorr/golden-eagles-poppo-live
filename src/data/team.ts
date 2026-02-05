@@ -10,8 +10,8 @@ export type TeamMember = {
 const membersByLocale: Record<Locale, TeamMember[]> = {
   en: [
     {
-      name: "Gui Oliver",
-      role: "Owner",
+      name: "Gui",
+      role: "The Boss",
       photoUrl: "/images/team/gui.jpg",
       poppoUrl: "https://www.poppo.com/@26062585",
     },
@@ -48,8 +48,8 @@ const membersByLocale: Record<Locale, TeamMember[]> = {
   ],
   "pt-br": [
     {
-      name: "Gui Oliver",
-      role: "Dono",
+      name: "Gui",
+      role: "O Chefe",
       photoUrl: "/images/team/gui.jpg",
       poppoUrl: "https://www.poppo.com/@26062585",
     },
