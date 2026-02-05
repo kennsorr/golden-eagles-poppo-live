@@ -36,10 +36,10 @@ export default function SiteHeader({
             className="h-20 w-20 object-contain"
           />
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-amber-200/80">
+            <p className="text-sm uppercase tracking-[0.24em] text-amber-200/85">
               {headerTagline}
             </p>
-            <p className="text-lg font-semibold text-white">{siteName}</p>
+            <p className="text-xl font-semibold text-white">{siteName}</p>
           </div>
         </div>
         <nav className="hidden items-center gap-6 text-lg font-semibold text-white/85 md:flex">
