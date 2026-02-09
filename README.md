@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Golden Eagles (Poppo Live Agency)
 
-## Getting Started
+Marketing site for the Golden Eagles Poppo Live agency. Includes bilingual pages
+(English + Portuguese) and events sourced from Strapi.
 
-First, run the development server:
+## Features
+
+- Next.js App Router + TypeScript
+- EN / PT-BR locale routes
+- Events powered by Strapi API
+- Google Analytics (GA4)
+- Animated background + custom UI components
+
+## Requirements
+
+- Node.js 18+
+- Strapi running locally or deployed
+
+## Local Development
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create `.env.local`:
+
+```bash
+STRAPI_URL=http://localhost:1337
+STRAPI_API_TOKEN=your_strapi_api_token_here
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+```
+
+Run the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000/pt-br`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Strapi Setup (Events)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a Collection Type named `event` (or `events`) with fields:
 
-## Learn More
+- `title` (Text)
+- `time` (Datetime)
+- `category` (Text)
+- `host` (Text)
+- `guest` (Text, optional)
+- `description` (Text, optional)
+- `image` (Media, optional)
 
-To learn more about Next.js, take a look at the following resources:
+Ensure the API token has read access and the Events endpoint is public or
+token-authenticated.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Recommended:
+- Frontend on Vercel
+- Strapi on Render / Railway / VPS
 
-## Deploy on Vercel
+Set these environment variables in your host:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+STRAPI_URL=https://cms.goldeneagleslive.com
+STRAPI_API_TOKEN=your_strapi_api_token_here
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Scripts
+
+```bash
+npm run dev
+npm run build
+npm run start
+```
