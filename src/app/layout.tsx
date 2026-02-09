@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Suspense } from "react";
 import Analytics from "@/components/Analytics";
 import "./globals.css";
 
@@ -47,7 +48,9 @@ export default function RootLayout({
                 gtag('config', '${gaId}');
               `}
             </Script>
-            <Analytics gaId={gaId} />
+            <Suspense fallback={null}>
+              <Analytics gaId={gaId} />
+            </Suspense>
           </>
         ) : null}
       </body>
