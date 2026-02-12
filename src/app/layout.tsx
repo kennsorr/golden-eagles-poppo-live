@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   title: "Golden Eagles | Poppo Live Agency",
   description:
     "Golden Eagles is a Poppo Live agency focused on community, events, and fun.",
+  icons: {
+    icon: "/golden-eagle-favicon.ico",
+  },
 };
 
 export default function RootLayout({
