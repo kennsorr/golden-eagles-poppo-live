@@ -42,7 +42,7 @@ export default function SiteHeader({
             <p className="text-xl font-semibold text-white">{siteName}</p>
           </div>
         </div>
-        <nav className="hidden items-center gap-6 text-lg font-semibold text-white/85 md:flex">
+        <nav className="flex flex-wrap items-center gap-4 text-base font-semibold text-white/85 md:gap-6 md:text-lg">
           <Link
             href={introPath}
             className={`transition hover:text-amber-200 ${

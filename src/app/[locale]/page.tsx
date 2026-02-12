@@ -67,7 +67,9 @@ export default async function IntroductionPage({
                   className="h-5 w-5 object-contain"
                 />
               </span>
-              <span className="go-live-text">Golden Eagles Live</span>
+              <span className="go-live-text whitespace-nowrap">
+                Golden Eagles Live
+              </span>
               <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
                 <svg
                   viewBox="0 0 24 24"
