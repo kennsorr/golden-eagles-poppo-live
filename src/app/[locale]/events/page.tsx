@@ -111,8 +111,7 @@ export default async function EventsPage({
 
   try {
     events = await fetchEvents(locale);
-  } catch (error) {
-    console.error("Failed to load events", error);
+  } catch {
     errorMessage =
       locale === "pt-br"
         ? "Não foi possível carregar os eventos agora. Tente novamente em alguns instantes."
@@ -136,6 +135,12 @@ export default async function EventsPage({
         {errorMessage ? (
           <div className="rounded-3xl border border-white/10 bg-slate-900/60 p-6 text-white/80">
             {errorMessage}
+          </div>
+        ) : events.length === 0 ? (
+          <div className="rounded-3xl border border-white/10 bg-slate-900/60 p-6 text-white/80">
+            {locale === "pt-br"
+              ? "Nenhum evento disponível no momento."
+              : "No events are available right now."}
           </div>
         ) : (
           events.map((event) => (
