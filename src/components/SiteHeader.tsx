@@ -28,21 +28,26 @@ export default function SiteHeader({
 
   return (
     <header className="border-b border-white/10 bg-slate-950/70 backdrop-blur">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-3">
-          <img
-            src="/images/golden-eagles-logo-s.png"
-            alt="Golden Eagles logo"
-            className="h-20 w-20 object-contain"
-          />
-          <div>
-            <p className="text-sm uppercase tracking-[0.24em] text-amber-200/85">
-              {headerTagline}
-            </p>
-            <p className="text-xl font-semibold text-white">{siteName}</p>
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-6 py-4">
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex min-w-0 items-center gap-3">
+            <img
+              src="/images/golden-eagles-logo-s.png"
+              alt="Golden Eagles logo"
+              className="h-20 w-20 object-contain"
+            />
+            <div className="min-w-0">
+              <p className="text-sm uppercase tracking-[0.24em] text-amber-200/85">
+                {headerTagline}
+              </p>
+              <p className="text-xl font-semibold text-white">{siteName}</p>
+            </div>
+          </div>
+          <div className="shrink-0">
+            <LocaleSwitcher locale={locale} />
           </div>
         </div>
-        <nav className="flex flex-wrap items-center gap-4 text-base font-semibold text-white/85 md:gap-6 md:text-lg">
+        <nav className="flex items-center gap-4 text-base font-semibold text-white/85 md:gap-6 md:text-lg">
           <Link
             href={introPath}
             className={`transition hover:text-amber-200 ${
@@ -60,9 +65,6 @@ export default function SiteHeader({
             {eventsLabel}
           </Link>
         </nav>
-        <div className="flex items-center gap-3">
-          <LocaleSwitcher locale={locale} />
-        </div>
       </div>
     </header>
   );
