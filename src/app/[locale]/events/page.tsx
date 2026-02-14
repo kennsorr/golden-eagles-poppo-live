@@ -106,7 +106,18 @@ export default async function EventsPage({
 }) {
   const { locale } = await params;
   const t = copy[locale];
-  const events = await fetchEvents(locale);
+  let events: Awaited<ReturnType<typeof fetchEvents>> = [];
+  let errorMessage: string | null = null;
+
+  try {
+    events = await fetchEvents(locale);
+  } catch (error) {
+    console.error("Failed to load events", error);
+    errorMessage =
+      locale === "pt-br"
+        ? "Não foi possível carregar os eventos agora. Tente novamente em alguns instantes."
+        : "We couldn't load events right now. Please try again in a moment.";
+  }
   const localeForDate = locale === "pt-br" ? "pt-BR" : "en-US";
 
   return (
@@ -122,19 +133,25 @@ export default async function EventsPage({
       </section>
 
       <section className="grid gap-6 lg:grid-cols-2">
-        {events.map((event) => (
-          <EventCard
-            key={event.id ?? event.title}
-            event={event}
-            locale={localeForDate}
-            labels={{
-              time: t.labels.time,
-              category: t.labels.category,
-              host: t.labels.host,
-              guest: t.labels.guest,
-            }}
-          />
-        ))}
+        {errorMessage ? (
+          <div className="rounded-3xl border border-white/10 bg-slate-900/60 p-6 text-white/80">
+            {errorMessage}
+          </div>
+        ) : (
+          events.map((event) => (
+            <EventCard
+              key={event.id ?? event.title}
+              event={event}
+              locale={localeForDate}
+              labels={{
+                time: t.labels.time,
+                category: t.labels.category,
+                host: t.labels.host,
+                guest: t.labels.guest,
+              }}
+            />
+          ))
+        )}
       </section>
     </div>
   );
