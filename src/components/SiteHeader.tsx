@@ -11,6 +11,7 @@ type SiteHeaderProps = {
   headerTagline: string;
   introLabel: string;
   eventsLabel: string;
+  pollsLabel: string;
 };
 
 export default function SiteHeader({
@@ -19,12 +20,15 @@ export default function SiteHeader({
   headerTagline,
   introLabel,
   eventsLabel,
+  pollsLabel,
 }: SiteHeaderProps) {
   const pathname = usePathname() ?? "/";
   const introPath = `/${locale}`;
   const eventsPath = `/${locale}/events`;
+  const pollsPath = `/${locale}/polls`;
   const isIntro = pathname === introPath;
   const isEvents = pathname === eventsPath;
+  const isPolls = pathname === pollsPath;
 
   return (
     <header className="border-b border-white/10 bg-slate-950/70 backdrop-blur">
@@ -63,6 +67,14 @@ export default function SiteHeader({
             }`}
           >
             {eventsLabel}
+          </Link>
+          <Link
+            href={pollsPath}
+            className={`transition hover:text-amber-200 ${
+              isPolls ? "text-amber-200 underline underline-offset-8" : ""
+            }`}
+          >
+            {pollsLabel}
           </Link>
         </nav>
       </div>

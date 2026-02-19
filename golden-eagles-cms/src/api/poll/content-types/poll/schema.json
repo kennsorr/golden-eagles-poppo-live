@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "polls",
+  "info": {
+    "singularName": "poll",
+    "pluralName": "polls",
+    "displayName": "Poll"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "firstName": {
+      "type": "string",
+      "minLength": 2,
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "minLength": 2,
+      "required": true,
+      "unique": false
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "active": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "endsAt": {
+      "type": "datetime"
+    },
+    "options": {
+      "type": "component",
+      "component": "poll.option",
+      "repeatable": true,
+      "required": true,
+      "min": 2
+    }
+  }
+}
