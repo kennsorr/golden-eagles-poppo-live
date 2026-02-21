@@ -41,7 +41,7 @@ export default function SiteHeader({
               className="h-20 w-20 object-contain"
             />
             <div className="min-w-0">
-              <p className="text-sm uppercase tracking-[0.24em] text-amber-200/85">
+              <p className="whitespace-nowrap text-sm uppercase tracking-[0.24em] text-amber-200/85">
                 {headerTagline}
               </p>
               <p className="text-xl font-semibold text-white">{siteName}</p>
