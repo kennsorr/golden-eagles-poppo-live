@@ -35,6 +35,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-slate-950 text-white antialiased`}
+        suppressHydrationWarning
       >
         {children}
         {gaId ? (
