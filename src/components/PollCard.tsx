@@ -1,6 +1,56 @@
 "use client";
 
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+
+function AnimatedCount({
+  target,
+  duration = 1200,
+  isActive,
+}: {
+  target: number;
+  duration?: number;
+  isActive: boolean;
+}) {
+  const [display, setDisplay] = useState(0);
+  const hasAnimatedRef = useRef(false);
+  const startTimeRef = useRef<number | null>(null);
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (!isActive) {
+      hasAnimatedRef.current = false;
+      setDisplay(0);
+      startTimeRef.current = null;
+      return;
+    }
+    if (hasAnimatedRef.current) return;
+    setDisplay(0);
+    startTimeRef.current = performance.now();
+
+    const animate = (now: number) => {
+      const start = startTimeRef.current ?? now;
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - (1 - progress) ** 2;
+      const value = Math.round(eased * target);
+      setDisplay(value);
+      if (progress >= 1) {
+        hasAnimatedRef.current = true;
+      } else {
+        rafRef.current = requestAnimationFrame(animate);
+      }
+    };
+    rafRef.current = requestAnimationFrame(animate);
+    return () => {
+      if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
+    };
+  }, [target, duration, isActive]);
+
+  if (isActive && hasAnimatedRef.current) {
+    return <>{target}</>;
+  }
+  return <>{display}</>;
+}
 
 type PollOption = {
   id: number;
@@ -101,6 +151,9 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
       ? options.filter((option) => (option.votes ?? 0) === maxVotes)
       : [];
   const winnerNames = winners.map((option) => option.label);
+  const winnerIds = new Set(winners.map((w) => w.id));
+  const isHighlighted = (optionId: number) =>
+    selectedOptionId === optionId || winnerIds.has(optionId);
   const winnerMessage =
     winners.length > 1
       ? locale === "pt-BR"
@@ -273,14 +326,6 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
                   } ${hasVoted || !isOpen ? "cursor-not-allowed opacity-80" : "cursor-pointer"}`}
                 >
                   <div className="flex items-center gap-3">
-                    <span
-                      className={`poll-choice-indicator ${
-                        selectedOptionId === option.id ? "is-selected" : ""
-                      }`}
-                      aria-hidden="true"
-                    >
-                      <span className="poll-choice-check" />
-                    </span>
                     <span className="sr-only">
                       {selectedOptionId === option.id ? labels.selected : ""}
                     </span>
@@ -346,7 +391,7 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
                 <div className="poll-results-labels">
                   <span
                     className={
-                      selectedOptionId === leftOption.id
+                      isHighlighted(leftOption.id)
                         ? "font-bold text-white"
                         : undefined
                     }
@@ -355,7 +400,7 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
                   </span>
                   <span
                     className={
-                      selectedOptionId === rightOption.id
+                      isHighlighted(rightOption.id)
                         ? "font-bold text-white"
                         : undefined
                     }
@@ -372,58 +417,86 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
                   }
                 >
                   <div
-                    className="poll-results-left"
-                  />
-                  <div className="poll-results-right" />
+                    className={`poll-results-left-wrap${!isOpen && leftVotes >= rightVotes && leftVotes > 0 ? " poll-results-winner" : ""}`}
+                  >
+                    <div className="poll-results-left" />
+                  </div>
+                  <div
+                    className={`poll-results-right-wrap${!isOpen && rightVotes >= leftVotes && rightVotes > 0 ? " poll-results-winner" : ""}`}
+                  >
+                    <div className="poll-results-right" />
+                  </div>
                 </div>
                 <div className="poll-results-percent">
                   <span
                     className={
-                      selectedOptionId === leftOption.id
+                      isHighlighted(leftOption.id)
                         ? "font-bold text-white"
                         : undefined
                     }
                   >
-                    {leftPercent}%
+                    <AnimatedCount
+                      target={leftVotes}
+                      duration={1200}
+                      isActive={showResults}
+                    />
                   </span>
                   <span
                     className={
-                      selectedOptionId === rightOption.id
+                      isHighlighted(rightOption.id)
                         ? "font-bold text-white"
                         : undefined
                     }
                   >
-                    {rightPercent}%
+                    <AnimatedCount
+                      target={rightVotes}
+                      duration={1200}
+                      isActive={showResults}
+                    />
                   </span>
                 </div>
               </div>
             ) : (
               <div className="space-y-3">
-                {options.map((option) => (
-                  <div
-                    key={option.id}
-                    className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-3"
-                  >
+                {options.map((option) => {
+                  const highlighted = isHighlighted(option.id);
+                  return (
                     <div
-                      className={
-                        option.id === selectedOptionId
-                          ? "font-bold text-white"
-                          : "text-white/90"
-                      }
+                      key={option.id}
+                      className={`flex flex-wrap items-center justify-between gap-3 rounded-2xl border px-4 py-3 ${
+                        highlighted
+                          ? "border-amber-300/80 bg-amber-500/10 poll-choice-selected"
+                          : "border-white/10 bg-slate-950/50"
+                      }`}
                     >
-                      {option.label}
+                      <div className="flex items-center gap-3">
+                        <div
+                          className={
+                            highlighted
+                              ? "font-bold text-white"
+                              : "text-white/90"
+                          }
+                        >
+                          {option.label}
+                        </div>
+                      </div>
+                      <span
+                        className={
+                          highlighted
+                            ? "text-sm font-bold text-white"
+                            : "text-sm text-white/70"
+                        }
+                      >
+                        {labels.votes}:{" "}
+                        <AnimatedCount
+                          target={option.votes ?? 0}
+                          duration={1200}
+                          isActive={showResults}
+                        />
+                      </span>
                     </div>
-                    <span
-                      className={
-                        option.id === selectedOptionId
-                          ? "text-sm font-bold text-white"
-                          : "text-sm text-white/70"
-                      }
-                    >
-                      {labels.votes}: {option.votes ?? 0}
-                    </span>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             )}
             {winnerMessage ? (
