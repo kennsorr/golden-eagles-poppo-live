@@ -548,6 +548,36 @@ export interface ApiPollPoll extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiShopItemShopItem extends Struct.CollectionTypeSchema {
+  collectionName: 'shop_items';
+  info: {
+    displayName: 'Shop Item (Affiliate Link)';
+    pluralName: 'shop-items';
+    singularName: 'shop-item';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images'>;
+    link: Schema.Attribute.Text & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::shop-item.shop-item'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1061,6 +1091,7 @@ declare module '@strapi/strapi' {
       'api::event.event': ApiEventEvent;
       'api::poll-vote.poll-vote': ApiPollVotePollVote;
       'api::poll.poll': ApiPollPoll;
+      'api::shop-item.shop-item': ApiShopItemShopItem;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

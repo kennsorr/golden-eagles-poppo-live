@@ -12,6 +12,7 @@ type SiteHeaderProps = {
   introLabel: string;
   eventsLabel: string;
   pollsLabel: string;
+  shopLabel: string;
 };
 
 export default function SiteHeader({
@@ -21,14 +22,17 @@ export default function SiteHeader({
   introLabel,
   eventsLabel,
   pollsLabel,
+  shopLabel,
 }: SiteHeaderProps) {
   const pathname = usePathname() ?? "/";
   const introPath = `/${locale}`;
   const eventsPath = `/${locale}/events`;
   const pollsPath = `/${locale}/polls`;
+  const shopPath = `/${locale}/shop`;
   const isIntro = pathname === introPath;
   const isEvents = pathname === eventsPath;
   const isPolls = pathname === pollsPath;
+  const isShop = pathname === shopPath;
 
   return (
     <header className="border-b border-white/10 bg-slate-950/70 backdrop-blur">
@@ -75,6 +79,14 @@ export default function SiteHeader({
             }`}
           >
             {pollsLabel}
+          </Link>
+          <Link
+            href={shopPath}
+            className={`transition hover:text-amber-200 ${
+              isShop ? "text-amber-200 underline underline-offset-8" : ""
+            }`}
+          >
+            {shopLabel}
           </Link>
         </nav>
       </div>

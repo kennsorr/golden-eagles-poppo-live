@@ -5,7 +5,7 @@ export const copy: Record<
   {
     siteName: string;
     headerTagline: string;
-    nav: { intro: string; events: string; polls: string };
+    nav: { intro: string; events: string; polls: string; shop: string };
     hero: {
       badge: string;
       title: string;
@@ -13,10 +13,12 @@ export const copy: Record<
       highlightTitle: string;
       highlightBody: string;
     };
-    sections: { administration: string; events: string; polls: string };
+    sections: { administration: string; events: string; polls: string; shop: string };
     eventsIntro: string;
     pollsIntro: string;
     pollsEmpty: string;
+    shopIntro: string;
+    shopEmpty: string;
     labels: {
       whatsapp: string;
       host: string;
@@ -41,7 +43,7 @@ export const copy: Record<
   en: {
     siteName: "Golden Eagles",
     headerTagline: "Poppo Live Agency",
-    nav: { intro: "Introduction", events: "Events", polls: "Polls" },
+    nav: { intro: "Introduction", events: "Events", polls: "Polls", shop: "Shop" },
     hero: {
       badge: "Poppo Live Agency",
       title: "Welcome to Golden Eagles",
@@ -51,12 +53,15 @@ export const copy: Record<
       highlightBody:
         "Community chats, themed battles, and live events are at the heart of what we do.",
     },
-    sections: { administration: "Administration", events: "Events", polls: "Polls" },
+    sections: { administration: "Administration", events: "Events", polls: "Polls", shop: "Shop" },
     eventsIntro:
       "Explore the upcoming meetups, battles, and special events.",
     pollsIntro:
       "Vote in the latest community polls and share your opinion.",
     pollsEmpty: "No polls are available right now. Please check back soon.",
+    shopIntro:
+      "Products and links we love. Support the agency by using these affiliate links.",
+    shopEmpty: "No shop items yet. Check back soon.",
     labels: {
       whatsapp: "WhatsApp",
       host: "Host",
@@ -82,7 +87,7 @@ export const copy: Record<
   "pt-br": {
     siteName: "Golden Eagles",
     headerTagline: "Agência Poppo Live",
-    nav: { intro: "Introdução", events: "Eventos", polls: "Enquetes" },
+    nav: { intro: "Introdução", events: "Eventos", polls: "Enquetes", shop: "Loja" },
     hero: {
       badge: "Agência Poppo Live",
       title: "Bem-vindo à Golden Eagles",
@@ -96,12 +101,16 @@ export const copy: Record<
       administration: "Administração",
       events: "Eventos",
       polls: "Enquetes",
+      shop: "Loja",
     },
     eventsIntro:
       "Confira os encontros, batalhas e eventos especiais que estão chegando.",
     pollsIntro:
       "Vote nas enquetes da comunidade e compartilhe sua opinião.",
     pollsEmpty: "Nenhuma enquete disponível no momento. Volte em breve.",
+    shopIntro:
+      "Produtos e links que a gente curte. Apoie a agência usando estes links de afiliados.",
+    shopEmpty: "Nenhum item na loja ainda. Volte em breve.",
     labels: {
       whatsapp: "WhatsApp",
       host: "Host",
