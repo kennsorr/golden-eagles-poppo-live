@@ -37,8 +37,16 @@ export default async function LocaleLayout({
         <PageTransition>{children}</PageTransition>
       </main>
       <footer className="relative border-t border-white/10 py-8">
-        <div className="mx-auto w-full max-w-6xl px-6 text-sm text-white/60">
+        <div className="mx-auto w-full max-w-6xl px-6 text-sm font-bold text-white/60">
           {t.footer.tagline}
+          <a
+            href={t.footer.linkUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="uppercase text-amber-200/90 underline hover:text-amber-200"
+          >
+            {t.footer.linkText}
+          </a>
         </div>
       </footer>
     </div>

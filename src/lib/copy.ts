@@ -37,7 +37,7 @@ export const copy: Record<
       pollFirstName: string;
       pollLastName: string;
     };
-    footer: { tagline: string };
+    footer: { tagline: string; linkText: string; linkUrl: string };
   }
 > = {
   en: {
@@ -81,7 +81,9 @@ export const copy: Record<
       pollLastName: "Last name",
     },
     footer: {
-      tagline: "A Poppo Live agency led by Gui Oliver.",
+      tagline: "Website created by ",
+      linkText: "sorrell.info",
+      linkUrl: "https://sorrell.info",
     },
   },
   "pt-br": {
@@ -131,7 +133,9 @@ export const copy: Record<
       pollLastName: "Sobrenome",
     },
     footer: {
-      tagline: "Uma agência do Poppo Live liderada por Gui Oliver.",
+      tagline: "Site criado por ",
+      linkText: "sorrell.info",
+      linkUrl: "https://sorrell.info",
     },
   },
 };

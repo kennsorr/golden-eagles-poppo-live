@@ -34,6 +34,8 @@ yarn build
 
 ## ⚙️ Deployment
 
+**Shop Item (affiliate link) OG fetch:** When editing a Shop Item, you can paste a product URL (e.g. Amazon) and use "Fetch from URL" or the "Fetch preview" side panel to get title and image from the page’s Open Graph meta. On save, if the link is set and title/imageUrl are empty, Strapi will also auto-fill them by calling the Next.js app. Set `FRONTEND_URL` (or `NEXT_PUBLIC_APP_URL`) in the CMS env to your Next.js app URL (e.g. `http://localhost:3000`) so the lifecycle and fetch-preview route can call `GET /api/fetch-og?url=...`.
+
 Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
 
 ```

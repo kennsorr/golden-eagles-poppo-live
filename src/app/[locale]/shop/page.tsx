@@ -6,9 +6,11 @@ type StrapiShopItem = {
   id: number;
   link?: string | null;
   title?: string | null;
+  imageUrl?: string | null;
   attributes?: {
     link?: string | null;
     title?: string | null;
+    imageUrl?: string | null;
     image?: {
       data?: { attributes?: { url?: string | null } } | null;
       url?: string | null;
@@ -48,13 +50,15 @@ async function fetchShopItems(locale: Locale) {
   return data.data.map((item) => {
     const link =
       item.attributes?.link ?? item.link ?? "";
+    const explicitImageUrl =
+      item.attributes?.imageUrl ?? item.imageUrl ?? null;
     const rawImage =
       item.attributes?.image?.data?.attributes?.url ??
       item.attributes?.image?.url ??
       item.image?.data?.attributes?.url ??
       item.image?.url ??
       null;
-    const imageUrl = rawImage
+    const mediaImageUrl = rawImage
       ? (() => {
           try {
             return new URL(rawImage, baseUrl).toString();
@@ -63,6 +67,7 @@ async function fetchShopItems(locale: Locale) {
           }
         })()
       : null;
+    const imageUrl = mediaImageUrl ?? explicitImageUrl;
 
     return {
       id: item.id,
