@@ -45,7 +45,7 @@ function extractOg(html: string): {
 /** Extract product/page title from body when OG is missing. Uses your working Amazon span#productTitle regex first. */
 function extractTitleFromBody(html: string): string | null {
   // Amazon: your working pattern - <span id="productTitle".*?>(.*?)</span>
-  const amazonTitle = html.match(/<span id="productTitle".*?>(.*?)<\/span>/s);
+  const amazonTitle = html.match(/<span id="productTitle".*?>([\s\S]*?)<\/span>/);
   if (amazonTitle) {
     const t = amazonTitle[1].trim();
     if (t.length > 0 && t.length < 500) return t;
