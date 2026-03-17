@@ -152,18 +152,50 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
       : [];
   const winnerNames = winners.map((option) => option.label);
   const winnerIds = new Set(winners.map((w) => w.id));
+  const userVotedForWinner =
+    selectedOptionId != null && winnerIds.has(selectedOptionId);
+  const weKnowUserVote = hasVoted && selectedOptionId != null;
+
+  // When poll is open: only highlight the option they voted for (no winner yet)
+  // When poll is closed: highlight winner(s) and the option they voted for
   const isHighlighted = (optionId: number) =>
-    selectedOptionId === optionId || winnerIds.has(optionId);
-  const winnerMessage =
-    winners.length > 1
-      ? locale === "pt-BR"
-        ? `Eba! Empate entre ${winnerNames.join(" e ")}!`
-        : `Yay! It's a tie between ${winnerNames.join(" and ")}!`
-      : winners.length === 1
-        ? locale === "pt-BR"
-          ? `Eba! ${winnerNames[0]} é o vencedor!`
-          : `Yay! ${winnerNames[0]} is the winner!`
-        : null;
+    isOpen
+      ? selectedOptionId === optionId
+      : selectedOptionId === optionId || winnerIds.has(optionId);
+
+  // Exactly one message: closed = winner/tie message (Yay/Oh no/neutral); open = no message
+  const feedbackMessage = (() => {
+    if (isOpen) return null; // Open: no winner/vote message, only bold their choice
+    if (winners.length === 0) return null;
+    const winnerLabel =
+      winners.length === 1
+        ? winnerNames[0]
+        : locale === "pt-BR"
+          ? winnerNames.join(" e ")
+          : winnerNames.join(" and ");
+    if (winners.length > 1) {
+      const tieMessage =
+        locale === "pt-BR"
+          ? `Empate entre ${winnerLabel}!`
+          : `It's a tie between ${winnerLabel}!`;
+      if (weKnowUserVote) {
+        return userVotedForWinner
+          ? (locale === "pt-BR" ? `Eba! ${tieMessage}` : `Yay! ${tieMessage}`)
+          : (locale === "pt-BR" ? `Oh não! ${tieMessage}` : `Oh no! ${tieMessage}`);
+      }
+      return tieMessage;
+    }
+    const winnerMessage =
+      locale === "pt-BR"
+        ? `${winnerNames[0]} é o vencedor!`
+        : `${winnerNames[0]} is the winner!`;
+    if (weKnowUserVote) {
+      return userVotedForWinner
+        ? (locale === "pt-BR" ? `Eba! ${winnerMessage}` : `Yay! ${winnerMessage}`)
+        : (locale === "pt-BR" ? `Oh não! ${winnerMessage}` : `Oh no! ${winnerMessage}`);
+    }
+    return winnerMessage;
+  })();
 
   const getOrCreateDeviceId = () => {
     if (typeof window === "undefined") {
@@ -499,22 +531,9 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
                 })}
               </div>
             )}
-            {winnerMessage ? (
+            {feedbackMessage ? (
               <span className="poll-vote-celebrate w-full justify-center text-sm text-center text-white/80">
-                {winnerMessage}
-              </span>
-            ) : null}
-            {isOpen && hasVoted ? (
-              <span className="poll-vote-celebrate w-full justify-center text-sm text-center text-white/80">
-                {locale === "pt-BR"
-                  ? `Eba! Você votou em ${
-                      options.find((option) => option.id === selectedOptionId)
-                        ?.label ?? ""
-                    }!`
-                  : `Yay! You voted for ${
-                      options.find((option) => option.id === selectedOptionId)
-                        ?.label ?? ""
-                    }!`}
+                {feedbackMessage}
               </span>
             ) : null}
           </div>
