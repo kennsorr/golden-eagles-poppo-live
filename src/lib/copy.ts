@@ -83,7 +83,7 @@ export const copy: Record<
     footer: {
       tagline: "Website created by ",
       linkText: "sorrell.info",
-      linkUrl: "https://sorrell.info",
+      linkUrl: "https://consulting.sorrell.info",
     },
   },
   "pt-br": {
@@ -135,7 +135,7 @@ export const copy: Record<
     footer: {
       tagline: "Site criado por ",
       linkText: "sorrell.info",
-      linkUrl: "https://sorrell.info",
+      linkUrl: "https://consulting.sorrell.info",
     },
   },
 };
