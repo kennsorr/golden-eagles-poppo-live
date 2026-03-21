@@ -161,10 +161,18 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
       ? selectedOptionId === optionId
       : selectedOptionId === optionId || winnerIds.has(optionId);
 
-  // Exactly one message: closed = winner/tie message (Yay/Oh no/neutral); open = no message
-  const feedbackMessage = (() => {
-    if (isOpen) return null; // Open: no winner/vote message, only bold their choice
-    if (winners.length === 0) return null;
+  const userVoteLabel = weKnowUserVote
+    ? options.find((o) => o.id === selectedOptionId)?.label ?? null
+    : null;
+
+  const userVoteMessage = userVoteLabel
+    ? locale === "pt-BR"
+      ? `Você votou "${userVoteLabel}"!`
+      : `You voted "${userVoteLabel}"!`
+    : null;
+
+  const winnerMessage = (() => {
+    if (isOpen || winners.length === 0) return null;
     const winnerLabel =
       winners.length === 1
         ? winnerNames[0]
@@ -172,27 +180,13 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
           ? winnerNames.join(" e ")
           : winnerNames.join(" and ");
     if (winners.length > 1) {
-      const tieMessage =
-        locale === "pt-BR"
-          ? `Empate entre ${winnerLabel}!`
-          : `It's a tie between ${winnerLabel}!`;
-      if (weKnowUserVote) {
-        return userVotedForWinner
-          ? (locale === "pt-BR" ? `Eba! ${tieMessage}` : `Yay! ${tieMessage}`)
-          : (locale === "pt-BR" ? `Oh não! ${tieMessage}` : `Oh no! ${tieMessage}`);
-      }
-      return tieMessage;
+      return locale === "pt-BR"
+        ? `Empate entre ${winnerLabel}!`
+        : `It's a tie between ${winnerLabel}!`;
     }
-    const winnerMessage =
-      locale === "pt-BR"
-        ? `${winnerNames[0]} é o vencedor!`
-        : `${winnerNames[0]} is the winner!`;
-    if (weKnowUserVote) {
-      return userVotedForWinner
-        ? (locale === "pt-BR" ? `Eba! ${winnerMessage}` : `Yay! ${winnerMessage}`)
-        : (locale === "pt-BR" ? `Oh não! ${winnerMessage}` : `Oh no! ${winnerMessage}`);
-    }
-    return winnerMessage;
+    return locale === "pt-BR"
+      ? `${winnerLabel} venceu!`
+      : `${winnerLabel} won!`;
   })();
 
   const getOrCreateDeviceId = () => {
@@ -515,10 +509,15 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
                 })}
               </div>
             )}
-            {feedbackMessage ? (
-              <span className="poll-vote-celebrate w-full justify-center text-sm text-center text-white/80">
-                {feedbackMessage}
-              </span>
+            {(userVoteMessage || winnerMessage) ? (
+              <div className="space-y-1 text-sm text-center text-white/80">
+                {userVoteMessage ? (
+                  <span className="block">{userVoteMessage}</span>
+                ) : null}
+                {winnerMessage ? (
+                  <span className="poll-vote-celebrate block">{winnerMessage}</span>
+                ) : null}
+              </div>
             ) : null}
           </div>
         )}
