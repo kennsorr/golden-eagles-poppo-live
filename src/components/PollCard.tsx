@@ -77,8 +77,7 @@ type PollCardProps = {
     votes: string;
     submit: string;
     selected: string;
-    firstName: string;
-    lastName: string;
+    name: string;
   };
 };
 
@@ -87,8 +86,7 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
   const [selectedOptionId, setSelectedOptionId] = useState<number | null>(null);
   const [isVoting, setIsVoting] = useState(false);
   const [hasVoted, setHasVoted] = useState(false);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [name, setName] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -221,11 +219,11 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
       return;
     }
 
-    if (!firstName.trim() || !lastName.trim()) {
+    if (!name.trim()) {
       setError(
         locale === "pt-BR"
-          ? "Informe seu nome e sobrenome."
-          : "Please enter your first and last name."
+          ? "Informe seu nome."
+          : "Please enter your name."
       );
       return;
     }
@@ -246,8 +244,7 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
         body: JSON.stringify({
           optionId: selectedOptionId,
           deviceId,
-          firstName: firstName.trim(),
-          lastName: lastName.trim(),
+          name: name.trim(),
         }),
       });
 
@@ -366,32 +363,18 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
                 </div>
               ))}
             </div>
-            <div className="grid gap-3 md:grid-cols-2">
-              <label className="flex flex-col gap-2 text-sm text-white/70">
-                <span className="font-semibold text-white/80">
-                  {labels.firstName}
-                </span>
-                <input
-                  type="text"
-                  value={firstName}
-                  onChange={(event) => setFirstName(event.target.value)}
-                  disabled={hasVoted || isVoting}
-                  className="rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-2 text-base text-white outline-none transition focus:border-amber-300/70 disabled:cursor-not-allowed disabled:opacity-70"
-                />
-              </label>
-              <label className="flex flex-col gap-2 text-sm text-white/70">
-                <span className="font-semibold text-white/80">
-                  {labels.lastName}
-                </span>
-                <input
-                  type="text"
-                  value={lastName}
-                  onChange={(event) => setLastName(event.target.value)}
-                  disabled={hasVoted || isVoting}
-                  className="rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-2 text-base text-white outline-none transition focus:border-amber-300/70 disabled:cursor-not-allowed disabled:opacity-70"
-                />
-              </label>
-            </div>
+            <label className="flex flex-col gap-2 text-sm text-white/70">
+              <span className="font-semibold text-white/80">
+                {labels.name}
+              </span>
+              <input
+                type="text"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                disabled={hasVoted || isVoting}
+                className="rounded-2xl border border-white/10 bg-slate-950/50 px-4 py-2 text-base text-white outline-none transition focus:border-amber-300/70 disabled:cursor-not-allowed disabled:opacity-70"
+              />
+            </label>
             <div className="flex flex-wrap items-center gap-3">
               <button
                 type="button"

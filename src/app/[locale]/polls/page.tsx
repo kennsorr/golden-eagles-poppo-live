@@ -121,8 +121,7 @@ export default async function PollsPage({
                 votes: t.labels.pollVotes,
                 submit: t.labels.pollSubmit,
                 selected: t.labels.pollSelected,
-                firstName: t.labels.pollFirstName,
-                lastName: t.labels.pollLastName,
+                name: t.labels.pollName,
               }}
             />
           ))

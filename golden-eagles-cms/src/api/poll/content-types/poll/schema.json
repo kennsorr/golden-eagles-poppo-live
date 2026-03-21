@@ -15,16 +15,10 @@
       "type": "string",
       "required": true
     },
-    "firstName": {
+    "name": {
       "type": "string",
       "minLength": 2,
       "required": true
-    },
-    "lastName": {
-      "type": "string",
-      "minLength": 2,
-      "required": true,
-      "unique": false
     },
     "slug": {
       "type": "uid",

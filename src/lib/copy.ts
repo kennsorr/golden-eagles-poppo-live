@@ -34,8 +34,7 @@ export const copy: Record<
       pollVotes: string;
       pollSubmit: string;
       pollSelected: string;
-      pollFirstName: string;
-      pollLastName: string;
+      pollName: string;
     };
     footer: { tagline: string; linkText: string; linkUrl: string };
   }
@@ -77,8 +76,7 @@ export const copy: Record<
       pollVotes: "Votes",
       pollSubmit: "Submit vote",
       pollSelected: "Selected",
-      pollFirstName: "First name",
-      pollLastName: "Last name",
+      pollName: "Name",
     },
     footer: {
       tagline: "Website created by ",
@@ -129,8 +127,7 @@ export const copy: Record<
       pollVotes: "Votos",
       pollSubmit: "Enviar voto",
       pollSelected: "Selecionado",
-      pollFirstName: "Nome",
-      pollLastName: "Sobrenome",
+      pollName: "Nome",
     },
     footer: {
       tagline: "Site criado por ",

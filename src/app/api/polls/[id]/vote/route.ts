@@ -8,8 +8,7 @@ export async function POST(
   let body: {
     optionId?: number;
     deviceId?: string;
-    firstName?: string;
-    lastName?: string;
+    name?: string;
   };
 
   try {
@@ -36,9 +35,9 @@ export async function POST(
     );
   }
 
-  if (!body.firstName || !body.lastName) {
+  if (!body.name) {
     return NextResponse.json(
-      { error: "Missing first or last name" },
+      { error: "Missing name" },
       { status: 400 }
     );
   }
@@ -63,8 +62,7 @@ export async function POST(
     body: JSON.stringify({
       optionId: body.optionId,
       deviceId: body.deviceId,
-      firstName: body.firstName,
-      lastName: body.lastName,
+      name: body.name,
     }),
     cache: "no-store",
   });

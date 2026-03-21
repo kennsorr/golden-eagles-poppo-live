@@ -7,7 +7,7 @@ import { factories } from '@strapi/strapi';
 export default factories.createCoreController('api::poll.poll', ({ strapi }) => ({
   async vote(ctx) {
     const { id } = ctx.params;
-    const { optionId, deviceId, firstName, lastName } = ctx.request.body ?? {};
+    const { optionId, deviceId, name } = ctx.request.body ?? {};
 
     if (!optionId) {
       return ctx.badRequest('Missing optionId');
@@ -17,8 +17,8 @@ export default factories.createCoreController('api::poll.poll', ({ strapi }) => 
       return ctx.badRequest('Missing deviceId');
     }
 
-    if (!firstName || !lastName) {
-      return ctx.badRequest('Missing first or last name');
+    if (!name) {
+      return ctx.badRequest('Missing name');
     }
 
     const resolvePoll = async (identifier: string | number) =>
@@ -121,8 +121,7 @@ export default factories.createCoreController('api::poll.poll', ({ strapi }) => 
         poll: pollId,
         deviceId,
         optionId: Number(optionId),
-        firstName: String(firstName).trim(),
-        lastName: String(lastName).trim(),
+        name: String(name).trim(),
       },
     });
 
