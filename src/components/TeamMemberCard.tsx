@@ -34,7 +34,7 @@ export default function TeamMemberCard({
             <div className="team-nameplate">{member.name}</div>
           </div>
           <div className="space-y-1 text-center">
-            <p className="text-base font-semibold text-white/80">
+            <p className="-mt-[15px] text-base font-semibold text-white/80">
               {member.role}
             </p>
           </div>
@@ -56,7 +56,7 @@ export default function TeamMemberCard({
             <div className="team-nameplate">{member.name}</div>
           </div>
           <div className="space-y-1 text-center">
-            <p className="text-base font-semibold text-white/80">
+            <p className="-mt-[15px] text-base font-semibold text-white/80">
               {member.role}
             </p>
           </div>
