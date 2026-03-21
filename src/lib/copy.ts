@@ -76,7 +76,7 @@ export const copy: Record<
       pollVotes: "Votes",
       pollSubmit: "Submit vote",
       pollSelected: "Selected",
-      pollName: "Name",
+      pollName: "Your name",
     },
     footer: {
       tagline: "Website created by ",
@@ -127,7 +127,7 @@ export const copy: Record<
       pollVotes: "Votos",
       pollSubmit: "Enviar voto",
       pollSelected: "Selecionado",
-      pollName: "Nome",
+      pollName: "Seu nome",
     },
     footer: {
       tagline: "Site criado por ",
