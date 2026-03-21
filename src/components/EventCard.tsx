@@ -1,4 +1,5 @@
 import { EventItem } from "@/data/events";
+import LocalTime from "./LocalTime";
 
 type EventCardProps = {
   event: EventItem;
@@ -11,25 +12,7 @@ type EventCardProps = {
   };
 };
 
-function formatEventTime(value: string, locale: string) {
-  if (!value) {
-    return "";
-  }
-
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) {
-    return value;
-  }
-
-  return new Intl.DateTimeFormat(locale, {
-    dateStyle: "medium",
-    timeStyle: "short",
-  }).format(date);
-}
-
 export default function EventCard({ event, locale, labels }: EventCardProps) {
-  const formattedTime = formatEventTime(event.time, locale);
-
   return (
     <article className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 shadow-lg shadow-black/20">
       {event.imageUrl ? (
@@ -44,7 +27,7 @@ export default function EventCard({ event, locale, labels }: EventCardProps) {
         <h3 className="text-xl font-semibold text-white">{event.title}</h3>
         <div className="text-sm text-white/70">
           <span className="font-semibold text-white/80">{labels.time}:</span>{" "}
-          {formattedTime || event.time}
+          <LocalTime utcTime={event.time} locale={locale} fallback={event.time} />
         </div>
         <div className="text-sm text-white/70">
           <span className="font-semibold text-white/80">
