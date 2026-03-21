@@ -6,6 +6,7 @@ import { factories } from '@strapi/strapi';
 
 export default factories.createCoreController('api::poll.poll', ({ strapi }) => ({
   async vote(ctx) {
+    console.log('[poll] vote received for poll', ctx.params.id);
     const { id } = ctx.params;
     const { optionId, deviceId, name } = ctx.request.body ?? {};
 
