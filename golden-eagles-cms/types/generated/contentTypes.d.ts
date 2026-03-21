@@ -478,14 +478,13 @@ export interface ApiPollVotePollVote extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     deviceId: Schema.Attribute.String & Schema.Attribute.Required;
-    firstName: Schema.Attribute.String & Schema.Attribute.Required;
-    lastName: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::poll-vote.poll-vote'
     > &
       Schema.Attribute.Private;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     optionId: Schema.Attribute.Integer & Schema.Attribute.Required;
     poll: Schema.Attribute.Relation<'manyToOne', 'api::poll.poll'>;
     publishedAt: Schema.Attribute.DateTime;
@@ -513,19 +512,14 @@ export interface ApiPollPoll extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     endsAt: Schema.Attribute.DateTime;
-    firstName: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        minLength: 2;
-      }>;
-    lastName: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetMinMaxLength<{
-        minLength: 2;
-      }>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::poll.poll'> &
       Schema.Attribute.Private;
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        minLength: 2;
+      }>;
     options: Schema.Attribute.Component<'poll.option', true> &
       Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
