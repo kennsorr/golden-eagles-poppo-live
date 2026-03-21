@@ -63,6 +63,7 @@ export type PollItem = {
   title: string;
   active: boolean;
   endsAt?: string | null;
+  imageUrl?: string | null;
   options: PollOption[];
 };
 
@@ -314,9 +315,22 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
     }
   };
 
+  const coverSrc = poll.imageUrl
+    ? poll.imageUrl.startsWith("http")
+      ? poll.imageUrl
+      : `${process.env.NEXT_PUBLIC_STRAPI_URL ?? ""}${poll.imageUrl}`
+    : null;
+
   return (
-    <article className="rounded-3xl border border-white/10 bg-slate-900/60 p-6 shadow-lg shadow-black/20">
-      <div className="flex flex-col gap-3">
+    <article className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 shadow-lg shadow-black/20">
+      {coverSrc ? (
+        <img
+          src={coverSrc}
+          alt={poll.title}
+          className="h-48 w-full object-cover"
+        />
+      ) : null}
+      <div className="flex flex-col gap-3 p-6">
         <h3 className="text-2xl font-semibold text-center text-white">
           {poll.title}
         </h3>

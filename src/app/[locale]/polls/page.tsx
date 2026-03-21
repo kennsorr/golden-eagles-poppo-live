@@ -8,16 +8,25 @@ type StrapiPollOption = {
   votes?: number | null;
 };
 
+type StrapiImage = {
+  url?: string | null;
+  alternativeText?: string | null;
+  width?: number | null;
+  height?: number | null;
+};
+
 type StrapiPoll = {
   id: number;
   title?: string | null;
   active?: boolean | null;
   endsAt?: string | null;
+  image?: StrapiImage | null;
   options?: StrapiPollOption[] | null;
   attributes?: {
     title?: string | null;
     active?: boolean | null;
     endsAt?: string | null;
+    image?: StrapiImage | { data?: { attributes?: StrapiImage } | null } | null;
     options?: StrapiPollOption[] | null;
   };
 };
@@ -32,7 +41,8 @@ async function fetchPolls() {
 
   const url = new URL("/api/polls", baseUrl);
   url.searchParams.set("sort", "createdAt:desc");
-  url.searchParams.set("populate", "options");
+  url.searchParams.set("populate[0]", "options");
+  url.searchParams.set("populate[1]", "image");
 
   const response = await fetch(url.toString(), {
     headers: {
@@ -49,11 +59,19 @@ async function fetchPolls() {
 
   return data.data.map<PollItem>((poll) => {
     const rawOptions = poll.attributes?.options ?? poll.options ?? [];
+    const rawImage = poll.attributes?.image ?? poll.image ?? null;
+    const imageUrl = rawImage
+      ? (rawImage as StrapiImage).url ??
+        (rawImage as { data?: { attributes?: StrapiImage } | null }).data
+          ?.attributes?.url ??
+        null
+      : null;
     return {
       id: poll.id,
       title: poll.attributes?.title ?? poll.title ?? "",
       active: poll.attributes?.active ?? poll.active ?? true,
       endsAt: poll.attributes?.endsAt ?? poll.endsAt ?? null,
+      imageUrl,
       options: rawOptions
         .filter((option): option is StrapiPollOption => Boolean(option))
         .map((option) => ({

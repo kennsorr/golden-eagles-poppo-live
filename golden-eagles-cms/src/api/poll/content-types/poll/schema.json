@@ -32,6 +32,13 @@
     "endsAt": {
       "type": "datetime"
     },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
     "options": {
       "type": "component",
       "component": "poll.option",
