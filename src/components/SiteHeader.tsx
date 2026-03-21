@@ -38,7 +38,7 @@ export default function SiteHeader({
     <header className="border-b border-white/10 bg-slate-950/70 backdrop-blur">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-6 py-4">
         <div className="flex items-center justify-between gap-3">
-          <div className="flex min-w-0 items-center gap-3">
+          <div className="flex min-w-0 items-center gap-3 -ml-3">
             <img
               src="/images/golden-eagles-logo-s.png"
               alt="Golden Eagles logo"
