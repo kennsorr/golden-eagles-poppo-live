@@ -23,6 +23,7 @@ export default async function LocaleLayout({
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
+      <div className="fixed inset-0 z-[9999] bg-black" />
       <SparkleBackground />
       <SiteHeader
         locale={safeLocale}
