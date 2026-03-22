@@ -38,6 +38,11 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         {children}
+        <Script
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3776862700552324"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         {gaId ? (
           <>
             <Script
