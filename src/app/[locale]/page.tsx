@@ -5,7 +5,11 @@ import { getTeamMembers } from "@/data/team";
 import { copy } from "@/lib/copy";
 import { Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/seo";
-import { fetchActivePolls, fetchUpcomingEvents } from "@/lib/strapi";
+import {
+  fetchActivePolls,
+  fetchUpcomingEvents,
+  fetchRecentShopItems,
+} from "@/lib/strapi";
 
 export async function generateMetadata({
   params,
@@ -33,30 +37,33 @@ export default async function IntroductionPage({
 }) {
   const { locale } = await params;
   const t = copy[locale];
-  const [members, activePolls, upcomingEvents] = await Promise.all([
-    Promise.resolve(getTeamMembers(locale)),
-    fetchActivePolls(),
-    fetchUpcomingEvents(),
-  ]);
-
-  const hasActivePoll = activePolls.length > 0;
-  const hasUpcomingEvent = !hasActivePoll && upcomingEvents.length > 0;
+  const [members, activePolls, upcomingEvents, recentShopItems] =
+    await Promise.all([
+      Promise.resolve(getTeamMembers(locale)),
+      fetchActivePolls(),
+      fetchUpcomingEvents(),
+      fetchRecentShopItems(),
+    ]);
 
   let highlightTitle: string;
   let highlightBody: string;
   let highlightCta: { label: string; href: string } | null = null;
 
-  if (hasActivePoll) {
+  if (activePolls.length > 0) {
     highlightTitle = t.hero.highlightPoll.title;
     highlightBody = t.hero.highlightPoll.body;
     highlightCta = { label: t.hero.highlightPoll.cta, href: `/${locale}/polls` };
-  } else if (hasUpcomingEvent) {
+  } else if (upcomingEvents.length > 0) {
     highlightTitle = t.hero.highlightEvent.title;
     highlightBody = t.hero.highlightEvent.body;
     highlightCta = { label: t.hero.highlightEvent.cta, href: `/${locale}/events` };
+  } else if (recentShopItems.length > 0) {
+    highlightTitle = t.hero.highlightShop.title;
+    highlightBody = t.hero.highlightShop.body;
+    highlightCta = { label: t.hero.highlightShop.cta, href: `/${locale}/shop` };
   } else {
-    highlightTitle = t.hero.highlightTitle;
-    highlightBody = t.hero.highlightBody;
+    highlightTitle = t.hero.highlightEmpty.title;
+    highlightBody = t.hero.highlightEmpty.body;
   }
 
   return (
@@ -137,7 +144,7 @@ export default async function IntroductionPage({
         </div>
         <div className="rounded-3xl border border-amber-200/20 bg-gradient-to-br from-amber-400/20 via-slate-900/70 to-slate-900/40 p-8 shadow-lg shadow-black/30">
           <p className="text-sm uppercase tracking-[0.2em] text-amber-200/80 whitespace-nowrap">
-            Golden Eagles
+            {t.hero.highlightLabel}
           </p>
           <h2 className="mt-3 text-2xl font-semibold text-white">
             {highlightTitle}

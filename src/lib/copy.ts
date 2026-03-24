@@ -10,10 +10,11 @@ export const copy: Record<
       badge: string;
       title: string;
       body: string;
-      highlightTitle: string;
-      highlightBody: string;
+      highlightLabel: string;
       highlightPoll: { title: string; body: string; cta: string };
       highlightEvent: { title: string; body: string; cta: string };
+      highlightShop: { title: string; body: string; cta: string };
+      highlightEmpty: { title: string; body: string };
     };
     sections: { administration: string; events: string; polls: string; shop: string };
     eventsIntro: string;
@@ -50,9 +51,7 @@ export const copy: Record<
       title: "Welcome to Golden Eagles",
       body:
         "Golden Eagles is a Poppo Live agency built for streamers, PK, and friends who love to connect. We host events, celebrate talent, and keep the vibe fun and welcoming.",
-      highlightTitle: "Meet the agency that keeps the energy soaring.",
-      highlightBody:
-        "Community chats, themed battles, and live events are at the heart of what we do.",
+      highlightLabel: "Updates",
       highlightPoll: {
         title: "A poll is live — your vote counts!",
         body: "We want to hear from YOU! Jump in and cast your vote before it closes.",
@@ -62,6 +61,15 @@ export const copy: Record<
         title: "Something exciting is around the corner!",
         body: "Don't miss out — check out our upcoming events and mark your calendar.",
         cta: "See Events",
+      },
+      highlightShop: {
+        title: "New in the shop — check it out!",
+        body: "We just added something fresh. Take a look and show some love!",
+        cta: "Browse Shop",
+      },
+      highlightEmpty: {
+        title: "All caught up!",
+        body: "Nothing new right now — when there's a poll to vote on, an event coming up, or something fresh in the shop, it'll show up right here.",
       },
     },
     sections: { administration: "Administration", events: "Events", polls: "Polls", shop: "Shop" },
@@ -105,9 +113,7 @@ export const copy: Record<
       title: "Bem-vindo à Golden Eagles",
       body:
         "Golden Eagles é uma agência do Poppo Live feita para streamers, PK e amizades. Organizamos eventos, valorizamos talentos e mantemos o clima leve e divertido.",
-      highlightTitle: "Conheça a agência que mantém a energia lá no alto.",
-      highlightBody:
-        "Bate-papos, batalhas temáticas e eventos ao vivo fazem parte do nosso dia a dia.",
+      highlightLabel: "Novidades",
       highlightPoll: {
         title: "Tem enquete rolando — sua opinião importa!",
         body: "Queremos ouvir VOCÊ! Entre e vote antes que encerre.",
@@ -117,6 +123,15 @@ export const copy: Record<
         title: "Tem coisa boa chegando!",
         body: "Não perca — confira os eventos que estão por vir e se prepare.",
         cta: "Ver Eventos",
+      },
+      highlightShop: {
+        title: "Novidade na loja — dá uma olhada!",
+        body: "Acabamos de adicionar algo novo. Confira e mostre seu apoio!",
+        cta: "Ver Loja",
+      },
+      highlightEmpty: {
+        title: "Tudo em dia!",
+        body: "Nada de novo por agora — quando tiver enquete pra votar, evento chegando ou novidade na loja, vai aparecer bem aqui.",
       },
     },
     sections: {

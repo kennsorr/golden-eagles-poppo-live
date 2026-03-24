@@ -47,8 +47,19 @@ function getStrapiConfig() {
   return { baseUrl, token };
 }
 
+type StrapiShopItem = {
+  id: number;
+  title?: string | null;
+  createdAt?: string | null;
+  attributes?: {
+    title?: string | null;
+    createdAt?: string | null;
+  };
+};
+
 export type ActivePoll = { id: number; title: string };
 export type UpcomingEvent = { id: number; title: string; time: string };
+export type RecentShopItem = { id: number; title: string };
 
 export async function fetchActivePolls(): Promise<ActivePoll[]> {
   const config = getStrapiConfig();
@@ -82,6 +93,45 @@ export async function fetchActivePolls(): Promise<ActivePoll[]> {
       .map((poll) => ({
         id: poll.id,
         title: poll.attributes?.title ?? poll.title ?? "",
+      }));
+  } catch {
+    return [];
+  }
+}
+
+const TWO_WEEKS_MS = 14 * 24 * 60 * 60 * 1000;
+
+export async function fetchRecentShopItems(): Promise<RecentShopItem[]> {
+  const config = getStrapiConfig();
+  if (!config) return [];
+
+  try {
+    const url = new URL("/api/shop-items", config.baseUrl);
+    url.searchParams.set("sort", "createdAt:desc");
+    url.searchParams.set("pagination[pageSize]", "1");
+
+    const response = await fetch(url.toString(), {
+      headers: { Authorization: `Bearer ${config.token}` },
+      cache: "no-store",
+    });
+
+    if (!response.ok) return [];
+
+    const data = (await response.json()) as { data: StrapiShopItem[] };
+    const now = Date.now();
+
+    return data.data
+      .filter((item) => {
+        const createdAt =
+          item.attributes?.createdAt ?? item.createdAt ?? null;
+        if (!createdAt) return false;
+        const created = new Date(createdAt);
+        if (Number.isNaN(created.getTime())) return false;
+        return now - created.getTime() < TWO_WEEKS_MS;
+      })
+      .map((item) => ({
+        id: item.id,
+        title: item.attributes?.title ?? item.title ?? "",
       }));
   } catch {
     return [];
