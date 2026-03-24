@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import ImageWithFallback from "./ImageWithFallback";
 
 function AnimatedCount({
   target,
@@ -323,13 +324,11 @@ export default function PollCard({ poll, locale, labels }: PollCardProps) {
 
   return (
     <article className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 shadow-lg shadow-black/20">
-      {coverSrc ? (
-        <img
-          src={coverSrc}
-          alt={poll.title}
-          className="h-48 w-full object-cover"
-        />
-      ) : null}
+      <ImageWithFallback
+        src={coverSrc ?? undefined}
+        alt={poll.title}
+        className="h-48 w-full object-cover"
+      />
       <div className="flex flex-col gap-3 p-6">
         <h3 className="text-2xl font-semibold text-center text-white">
           {poll.title}

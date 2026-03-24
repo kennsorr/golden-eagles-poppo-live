@@ -1,4 +1,5 @@
 import { EventItem } from "@/data/events";
+import ImageWithFallback from "./ImageWithFallback";
 import LocalTime from "./LocalTime";
 
 type EventCardProps = {
@@ -15,14 +16,12 @@ type EventCardProps = {
 export default function EventCard({ event, locale, labels }: EventCardProps) {
   return (
     <article className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 shadow-lg shadow-black/20">
-      {event.imageUrl ? (
-        <img
-          src={event.imageUrl}
-          alt={event.title}
-          className="h-44 w-full object-cover"
-          loading="lazy"
-        />
-      ) : null}
+      <ImageWithFallback
+        src={event.imageUrl ?? undefined}
+        alt={event.title}
+        className="h-44 w-full object-cover"
+        loading="lazy"
+      />
       <div className="flex flex-col gap-2 p-6">
         <h3 className="text-xl font-semibold text-white">{event.title}</h3>
         <div className="text-sm text-white/70">
