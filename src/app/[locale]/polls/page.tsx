@@ -128,7 +128,7 @@ export default async function PollsPage({
   return (
     <div className="space-y-10">
       <section className="space-y-4">
-        <p className="text-sm uppercase tracking-[0.3em] text-amber-200/80">
+        <p className="hidden text-sm uppercase tracking-[0.3em] text-amber-200/80">
           {t.sections.polls}
         </p>
         <h1 className="text-4xl font-semibold text-white md:text-5xl">
