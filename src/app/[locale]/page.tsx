@@ -1,7 +1,9 @@
+import Link from "next/link";
 import TeamMemberCard from "@/components/TeamMemberCard";
 import { getTeamMembers } from "@/data/team";
 import { copy } from "@/lib/copy";
 import { Locale } from "@/lib/i18n";
+import { fetchActivePolls, fetchUpcomingEvents } from "@/lib/strapi";
 
 export default async function IntroductionPage({
   params,
@@ -10,7 +12,31 @@ export default async function IntroductionPage({
 }) {
   const { locale } = await params;
   const t = copy[locale];
-  const members = getTeamMembers(locale);
+  const [members, activePolls, upcomingEvents] = await Promise.all([
+    Promise.resolve(getTeamMembers(locale)),
+    fetchActivePolls(),
+    fetchUpcomingEvents(),
+  ]);
+
+  const hasActivePoll = activePolls.length > 0;
+  const hasUpcomingEvent = !hasActivePoll && upcomingEvents.length > 0;
+
+  let highlightTitle: string;
+  let highlightBody: string;
+  let highlightCta: { label: string; href: string } | null = null;
+
+  if (hasActivePoll) {
+    highlightTitle = t.hero.highlightPoll.title;
+    highlightBody = t.hero.highlightPoll.body;
+    highlightCta = { label: t.hero.highlightPoll.cta, href: `/${locale}/polls` };
+  } else if (hasUpcomingEvent) {
+    highlightTitle = t.hero.highlightEvent.title;
+    highlightBody = t.hero.highlightEvent.body;
+    highlightCta = { label: t.hero.highlightEvent.cta, href: `/${locale}/events` };
+  } else {
+    highlightTitle = t.hero.highlightTitle;
+    highlightBody = t.hero.highlightBody;
+  }
 
   return (
     <div className="space-y-16">
@@ -93,9 +119,30 @@ export default async function IntroductionPage({
             Golden Eagles
           </p>
           <h2 className="mt-3 text-2xl font-semibold text-white">
-            {t.hero.highlightTitle}
+            {highlightTitle}
           </h2>
-          <p className="mt-4 text-sm text-white/70">{t.hero.highlightBody}</p>
+          <p className="mt-4 text-sm text-white/70">{highlightBody}</p>
+          {highlightCta && (
+            <Link
+              href={highlightCta.href}
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-amber-200/40 bg-gradient-to-r from-amber-400/30 via-amber-300/20 to-pink-400/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-amber-100 shadow-lg shadow-amber-400/20 transition hover:border-amber-200/70 hover:text-white hover:shadow-amber-400/30"
+            >
+              {highlightCta.label}
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4"
+                aria-hidden="true"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14" />
+                <path d="M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+          )}
         </div>
       </section>
 

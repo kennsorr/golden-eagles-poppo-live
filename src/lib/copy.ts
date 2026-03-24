@@ -12,6 +12,8 @@ export const copy: Record<
       body: string;
       highlightTitle: string;
       highlightBody: string;
+      highlightPoll: { title: string; body: string; cta: string };
+      highlightEvent: { title: string; body: string; cta: string };
     };
     sections: { administration: string; events: string; polls: string; shop: string };
     eventsIntro: string;
@@ -51,6 +53,16 @@ export const copy: Record<
       highlightTitle: "Meet the agency that keeps the energy soaring.",
       highlightBody:
         "Community chats, themed battles, and live events are at the heart of what we do.",
+      highlightPoll: {
+        title: "A poll is live — your vote counts!",
+        body: "We want to hear from YOU! Jump in and cast your vote before it closes.",
+        cta: "Vote Now",
+      },
+      highlightEvent: {
+        title: "Something exciting is around the corner!",
+        body: "Don't miss out — check out our upcoming events and mark your calendar.",
+        cta: "See Events",
+      },
     },
     sections: { administration: "Administration", events: "Events", polls: "Polls", shop: "Shop" },
     eventsIntro:
@@ -96,6 +108,16 @@ export const copy: Record<
       highlightTitle: "Conheça a agência que mantém a energia lá no alto.",
       highlightBody:
         "Bate-papos, batalhas temáticas e eventos ao vivo fazem parte do nosso dia a dia.",
+      highlightPoll: {
+        title: "Tem enquete rolando — sua opinião importa!",
+        body: "Queremos ouvir VOCÊ! Entre e vote antes que encerre.",
+        cta: "Votar Agora",
+      },
+      highlightEvent: {
+        title: "Tem coisa boa chegando!",
+        body: "Não perca — confira os eventos que estão por vir e se prepare.",
+        cta: "Ver Eventos",
+      },
     },
     sections: {
       administration: "Administração",
