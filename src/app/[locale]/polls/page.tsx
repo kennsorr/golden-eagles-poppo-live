@@ -1,6 +1,27 @@
+import type { Metadata } from "next";
 import PollCard, { PollItem } from "@/components/PollCard";
 import { copy } from "@/lib/copy";
 import { Locale } from "@/lib/i18n";
+import { buildAlternates } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = copy[locale];
+
+  return {
+    title: t.nav.polls,
+    description: t.pollsIntro,
+    alternates: buildAlternates(locale, "polls"),
+    openGraph: {
+      title: `${t.nav.polls} | ${t.siteName}`,
+      description: t.pollsIntro,
+    },
+  };
+}
 
 type StrapiPollOption = {
   id: number;

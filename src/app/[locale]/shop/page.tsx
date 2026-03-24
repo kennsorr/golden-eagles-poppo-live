@@ -1,6 +1,27 @@
+import type { Metadata } from "next";
 import ShopItemCard from "@/components/ShopItemCard";
 import { copy } from "@/lib/copy";
 import { Locale } from "@/lib/i18n";
+import { buildAlternates } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = copy[locale as Locale];
+
+  return {
+    title: t.nav.shop,
+    description: t.shopIntro,
+    alternates: buildAlternates(locale as Locale, "shop"),
+    openGraph: {
+      title: `${t.nav.shop} | ${t.siteName}`,
+      description: t.shopIntro,
+    },
+  };
+}
 
 type StrapiShopItem = {
   id: number;

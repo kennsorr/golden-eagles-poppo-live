@@ -1,9 +1,30 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import TeamMemberCard from "@/components/TeamMemberCard";
 import { getTeamMembers } from "@/data/team";
 import { copy } from "@/lib/copy";
 import { Locale } from "@/lib/i18n";
+import { buildAlternates } from "@/lib/seo";
 import { fetchActivePolls, fetchUpcomingEvents } from "@/lib/strapi";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = copy[locale];
+
+  return {
+    title: t.hero.title,
+    description: t.hero.body,
+    alternates: buildAlternates(locale),
+    openGraph: {
+      title: `${t.hero.title} | ${t.siteName}`,
+      description: t.hero.body,
+    },
+  };
+}
 
 export default async function IntroductionPage({
   params,

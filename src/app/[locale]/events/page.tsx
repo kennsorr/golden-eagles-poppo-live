@@ -1,6 +1,27 @@
+import type { Metadata } from "next";
 import EventCard from "@/components/EventCard";
 import { copy } from "@/lib/copy";
 import { Locale } from "@/lib/i18n";
+import { buildAlternates } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = copy[locale];
+
+  return {
+    title: t.nav.events,
+    description: t.eventsIntro,
+    alternates: buildAlternates(locale, "events"),
+    openGraph: {
+      title: `${t.nav.events} | ${t.siteName}`,
+      description: t.eventsIntro,
+    },
+  };
+}
 
 type StrapiEvent = {
   id: number;
