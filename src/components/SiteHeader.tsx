@@ -1,4 +1,4 @@
- "use client";
+"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,6 +13,7 @@ type SiteHeaderProps = {
   eventsLabel: string;
   pollsLabel: string;
   shopLabel: string;
+  blogLabel: string;
 };
 
 export default function SiteHeader({
@@ -23,16 +24,24 @@ export default function SiteHeader({
   eventsLabel,
   pollsLabel,
   shopLabel,
+  blogLabel,
 }: SiteHeaderProps) {
   const pathname = usePathname() ?? "/";
   const introPath = `/${locale}`;
   const eventsPath = `/${locale}/events`;
   const pollsPath = `/${locale}/polls`;
   const shopPath = `/${locale}/shop`;
+  const blogPath = `/${locale}/blog`;
   const isIntro = pathname === introPath;
   const isEvents = pathname === eventsPath;
   const isPolls = pathname === pollsPath;
   const isShop = pathname === shopPath;
+  const isBlog = pathname.startsWith(blogPath);
+
+  const navLinkClass = (active: boolean) =>
+    `whitespace-nowrap transition hover:text-amber-200 ${
+      active ? "text-amber-200 underline underline-offset-8" : ""
+    }`;
 
   return (
     <header className="border-b border-white/10 bg-slate-950/70 backdrop-blur">
@@ -55,37 +64,27 @@ export default function SiteHeader({
             <LocaleSwitcher locale={locale} />
           </div>
         </div>
-        <nav className="flex items-center gap-4 text-base font-semibold text-white/85 md:gap-6 md:text-lg">
-          <Link
-            href={introPath}
-            className={`transition hover:text-amber-200 ${
-              isIntro ? "text-amber-200 underline underline-offset-8" : ""
-            }`}
-          >
+        <nav
+          className="flex w-full items-center justify-between text-sm font-semibold text-white/85 sm:text-base md:justify-start md:gap-6 md:text-lg"
+          aria-label="Main"
+        >
+          <Link href={introPath} className={navLinkClass(isIntro)}>
             {introLabel}
           </Link>
-          <Link
-            href={eventsPath}
-            className={`transition hover:text-amber-200 ${
-              isEvents ? "text-amber-200 underline underline-offset-8" : ""
-            }`}
-          >
+          <span className="h-3.5 w-px bg-white/15 md:hidden" aria-hidden />
+          <Link href={eventsPath} className={navLinkClass(isEvents)}>
             {eventsLabel}
           </Link>
-          <Link
-            href={pollsPath}
-            className={`transition hover:text-amber-200 ${
-              isPolls ? "text-amber-200 underline underline-offset-8" : ""
-            }`}
-          >
+          <span className="h-3.5 w-px bg-white/15 md:hidden" aria-hidden />
+          <Link href={pollsPath} className={navLinkClass(isPolls)}>
             {pollsLabel}
           </Link>
-          <Link
-            href={shopPath}
-            className={`transition hover:text-amber-200 ${
-              isShop ? "text-amber-200 underline underline-offset-8" : ""
-            }`}
-          >
+          <span className="h-3.5 w-px bg-white/15 md:hidden" aria-hidden />
+          <Link href={blogPath} className={navLinkClass(isBlog)}>
+            {blogLabel}
+          </Link>
+          <span className="h-3.5 w-px bg-white/15 md:hidden" aria-hidden />
+          <Link href={shopPath} className={navLinkClass(isShop)}>
             {shopLabel}
           </Link>
         </nav>

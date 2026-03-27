@@ -58,6 +58,7 @@ export default async function LocaleLayout({
         eventsLabel={t.nav.events}
         pollsLabel={t.nav.polls}
         shopLabel={t.nav.shop}
+        blogLabel={t.nav.blog}
       />
       <main className="relative mx-auto w-full max-w-6xl px-6 py-12">
         <PageTransition>{children}</PageTransition>

@@ -5,7 +5,7 @@ export const copy: Record<
   {
     siteName: string;
     headerTagline: string;
-    nav: { intro: string; events: string; polls: string; shop: string };
+    nav: { intro: string; events: string; polls: string; shop: string; blog: string };
     hero: {
       badge: string;
       title: string;
@@ -16,6 +16,8 @@ export const copy: Record<
       highlightShop: { title: string; body: string; cta: string };
       highlightEmpty: { title: string; body: string };
     };
+    blogIntro: string;
+    blogEmpty: string;
     sections: { administration: string; events: string; polls: string; shop: string };
     eventsIntro: string;
     pollsIntro: string;
@@ -38,6 +40,8 @@ export const copy: Record<
       pollSubmit: string;
       pollSelected: string;
       pollName: string;
+      blogReadMore: string;
+      blogBackToList: string;
     };
     footer: { tagline: string; linkText: string; linkUrl: string };
   }
@@ -45,7 +49,7 @@ export const copy: Record<
   en: {
     siteName: "Golden Eagles",
     headerTagline: "Poppo Live Agency",
-    nav: { intro: "Introduction", events: "Events", polls: "Polls", shop: "Shop" },
+    nav: { intro: "Intro", events: "Events", polls: "Polls", shop: "Shop", blog: "Blog" },
     hero: {
       badge: "Poppo Live Agency",
       title: "Welcome to Golden Eagles",
@@ -78,6 +82,9 @@ export const copy: Record<
     pollsIntro:
       "Vote in the latest community polls and share your opinion.",
     pollsEmpty: "No polls are available right now. Please check back soon.",
+    blogIntro:
+      "Thoughts, tips, and real talk about life on Poppo Live.",
+    blogEmpty: "No posts yet. Check back soon.",
     shopIntro:
       "Products and links we love. Support the agency by using these affiliate links.",
     shopEmpty: "No shop items yet. Check back soon.",
@@ -97,6 +104,8 @@ export const copy: Record<
       pollSubmit: "Submit vote",
       pollSelected: "Selected",
       pollName: "Your name",
+      blogReadMore: "Read more",
+      blogBackToList: "Back to blog",
     },
     footer: {
       tagline: "Website created by ",
@@ -107,7 +116,7 @@ export const copy: Record<
   "pt-br": {
     siteName: "Golden Eagles",
     headerTagline: "Agência Poppo Live",
-    nav: { intro: "Introdução", events: "Eventos", polls: "Enquetes", shop: "Loja" },
+    nav: { intro: "Início", events: "Eventos", polls: "Enquetes", shop: "Loja", blog: "Blog" },
     hero: {
       badge: "Agência Poppo Live",
       title: "Bem-vindo à Golden Eagles",
@@ -145,6 +154,9 @@ export const copy: Record<
     pollsIntro:
       "Vote nas enquetes da comunidade e compartilhe sua opinião.",
     pollsEmpty: "Nenhuma enquete disponível no momento. Volte em breve.",
+    blogIntro:
+      "Pensamentos, dicas e papo reto sobre a vida no Poppo Live.",
+    blogEmpty: "Nenhum post ainda. Volte em breve.",
     shopIntro:
       "Produtos e links que a gente curte. Apoie a agência usando estes links de afiliados.",
     shopEmpty: "Nenhum item na loja ainda. Volte em breve.",
@@ -165,6 +177,8 @@ export const copy: Record<
       pollSubmit: "Enviar voto",
       pollSelected: "Selecionado",
       pollName: "Seu nome",
+      blogReadMore: "Leia mais",
+      blogBackToList: "Voltar ao blog",
     },
     footer: {
       tagline: "Site criado por ",
