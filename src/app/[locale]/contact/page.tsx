@@ -95,10 +95,10 @@ export default async function ContactPage({
           </h2>
           <p className="text-white/70">{t.contact.emailBody}</p>
           <a
-            href="mailto:contact@goldeneagles.live"
+            href="mailto:contact@sorrell.info"
             className="inline-flex items-center gap-2 rounded-full border border-amber-200/40 bg-linear-to-r from-amber-400/20 via-amber-300/10 to-pink-400/20 px-5 py-2.5 text-sm font-semibold text-amber-100 transition hover:border-amber-200/70 hover:text-white"
           >
-            contact@goldeneagles.live
+            contact@sorrell.info
           </a>
         </div>
       </div>
