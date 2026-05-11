@@ -7,17 +7,12 @@ export default function NavigationProgress() {
   const pathname = usePathname();
   const [isNavigating, setIsNavigating] = useState(false);
   const lastPathRef = useRef(pathname);
-  const fadeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (lastPathRef.current !== pathname) {
       lastPathRef.current = pathname;
-      if (fadeTimer.current) clearTimeout(fadeTimer.current);
-      fadeTimer.current = setTimeout(() => setIsNavigating(false), 120);
+      setIsNavigating(false);
     }
-    return () => {
-      if (fadeTimer.current) clearTimeout(fadeTimer.current);
-    };
   }, [pathname]);
 
   useEffect(() => {
