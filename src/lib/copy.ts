@@ -13,6 +13,7 @@ export const copy: Record<
       highlightLabel: string;
       highlightPoll: { title: string; body: string; cta: string };
       highlightEvent: { title: string; body: string; cta: string };
+      highlightBlog: { title: string; body: string; cta: string };
       highlightShop: { title: string; body: string; cta: string };
       highlightEmpty: { title: string; body: string };
     };
@@ -90,6 +91,11 @@ export const copy: Record<
         title: "Something exciting is around the corner!",
         body: "Don't miss out — check out our upcoming events and mark your calendar.",
         cta: "See Events",
+      },
+      highlightBlog: {
+        title: "New on the blog!",
+        body: "We just published a fresh article. Read the latest from Golden Eagles.",
+        cta: "Read Article",
       },
       highlightShop: {
         title: "New in the shop — check it out!",
@@ -201,6 +207,11 @@ export const copy: Record<
         title: "Tem coisa boa chegando!",
         body: "Não perca — confira os eventos que estão por vir e se prepare.",
         cta: "Ver Eventos",
+      },
+      highlightBlog: {
+        title: "Novo artigo no blog!",
+        body: "Acabamos de publicar um artigo novo. Leia as novidades da Golden Eagles.",
+        cta: "Ler Artigo",
       },
       highlightShop: {
         title: "Novidade na loja — dá uma olhada!",

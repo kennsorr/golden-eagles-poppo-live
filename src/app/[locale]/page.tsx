@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import TeamMemberCard from "@/components/TeamMemberCard";
+import { getRecentBlogPost } from "@/data/blog";
 import { getTeamMembers } from "@/data/team";
 import { copy } from "@/lib/copy";
-import { isLocale, Locale } from "@/lib/i18n";
+import { isLocale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/seo";
 import {
   fetchActivePolls,
@@ -44,12 +45,13 @@ export default async function IntroductionPage({
     notFound();
   }
   const t = copy[locale];
-  const [members, activePolls, upcomingEvents, recentShopItems] =
+  const [members, activePolls, upcomingEvents, recentShopItems, recentBlogPost] =
     await Promise.all([
       Promise.resolve(getTeamMembers(locale)),
       fetchActivePolls(),
       fetchUpcomingEvents(),
       fetchRecentShopItems(),
+      Promise.resolve(getRecentBlogPost(locale)),
     ]);
 
   let highlightTitle: string;
@@ -64,6 +66,13 @@ export default async function IntroductionPage({
     highlightTitle = t.hero.highlightEvent.title;
     highlightBody = t.hero.highlightEvent.body;
     highlightCta = { label: t.hero.highlightEvent.cta, href: `/${locale}/events` };
+  } else if (recentBlogPost) {
+    highlightTitle = t.hero.highlightBlog.title;
+    highlightBody = t.hero.highlightBlog.body;
+    highlightCta = {
+      label: t.hero.highlightBlog.cta,
+      href: `/${locale}/blog/${recentBlogPost.slug}`,
+    };
   } else if (recentShopItems.length > 0) {
     highlightTitle = t.hero.highlightShop.title;
     highlightBody = t.hero.highlightShop.body;

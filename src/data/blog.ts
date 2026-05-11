@@ -578,10 +578,23 @@ Conserte as coisas pequenas primeiro. Energia, consistência, ganchos, silêncio
   ],
 };
 
+const ONE_WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+
 export function getBlogPosts(locale: Locale): BlogPost[] {
   return [...postsByLocale[locale]].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
+}
+
+export function getRecentBlogPost(locale: Locale): BlogPost | undefined {
+  const now = Date.now();
+
+  return getBlogPosts(locale).find((post) => {
+    const publishedAt = new Date(post.date).getTime();
+    const age = now - publishedAt;
+
+    return !Number.isNaN(publishedAt) && age >= 0 && age <= ONE_WEEK_MS;
+  });
 }
 
 export function getBlogPost(
