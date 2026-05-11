@@ -89,7 +89,7 @@ export default async function BlogPostPage({
           <img
             src={post.coverImage}
             alt={post.title}
-            className="h-56 w-full object-cover sm:h-72 md:h-80"
+            className="h-72 w-full rounded-b-3xl object-cover sm:h-96 md:h-120"
           />
         )}
         <div className="p-8 md:p-12">
