@@ -175,7 +175,15 @@ So the real question isn't "will this help me grow?"
 
 It's "if more people showed up tomorrow, would they stay?"
 
-If the answer is yes, it's probably worth the conversation.`,
+If the answer is yes, it's probably worth the conversation.
+
+---
+
+## Sources
+
+- [POPPO Live FAQ — Hosts, Agencies & Earnings](https://www.poppolive.net/en/faq/)
+- [How Poppo App Agency Earn Money — LH Talent Agency](https://lhtalentagency.com/blogs/how-poppo-app-agency-earn-money)
+- [Poppo Live Sub-Agent Commission 2026 — BitTopup News](https://news.bittopup.com/news/poppo-live-sub-agent-commission-2026-10-host-profit-guide)`,
     },
     {
       slug: "how-to-get-coins-on-poppo-live",
@@ -192,7 +200,16 @@ Bigger packages generally get you a better rate, so if you're the type who goes 
 
 Once your coins are in, they're ready to use immediately. Jump into any live stream, tap the gift icon, pick something, and send it. The streamer will probably react. That's kind of the whole point.
 
-Also: coins don't expire. So if you stock up and then discover you have a life outside the app, they'll still be waiting for you when you return.`,
+Also: coins don't expire. So if you stock up and then discover you have a life outside the app, they'll still be waiting for you when you return.
+
+---
+
+## Sources
+
+- [POPPO LIVE](https://www.poppolive.com/)
+- [How to Recharge Poppo Live Coins and Earn Free Coins Easily — EnjoyGM](https://www.enjoygm.com/blog/poppo-live/how-to-recharge-poppo-coins-free)
+- [Poppo Live Coins Guide: Earn, Gift & Save 30% on Bulk Packs Now — BitTopup News](https://news.bittopup.com/news/poppo-live-coins-guide-earn-gift-save-30-on-bulk-packs-now)
+- [Best Ways to Use Coins in Poppo Live — LootBar](https://lootbar.gg/blog/en/poppo-live-best-ways-to-use-coins.html)`,
     },
     {
       slug: "why-nobody-is-watching-your-stream",
@@ -265,7 +282,15 @@ Most streams fail quietly not because the person is boring, but because they hav
 
 The camera doesn't pick up potential. It picks up what's actually happening in the room right now.
 
-Fix the small stuff first. Energy, consistency, hooks, silence. Get those right and the rest gets a lot easier.`,
+Fix the small stuff first. Energy, consistency, hooks, silence. Get those right and the rest gets a lot easier.
+
+---
+
+## Sources
+
+- [POPPO LIVE](https://www.poppolive.com/)
+- [Top 5 Live Streaming Practices to Boost Viewer Engagement — TVStartup](https://tvstartup.com/5-essential-practices-for-successful-live-streaming-in-2025/)
+- [Creating a Stream Schedule That Builds Audience Loyalty — Modern Stoa](https://modernstoa.co/creating-a-stream-schedule-that-builds-audience-loyalty/)`,
     },
   ],
   "pt-br": [
@@ -433,7 +458,15 @@ Então a verdadeira pergunta não é "isso vai me ajudar a crescer?"
 
 É "se mais pessoas aparecessem amanhã, elas ficariam?"
 
-Se a resposta é sim, provavelmente vale a conversa.`,
+Se a resposta é sim, provavelmente vale a conversa.
+
+---
+
+## Fontes
+
+- [POPPO Live FAQ — Hosts, Agencies & Earnings](https://www.poppolive.net/en/faq/)
+- [How Poppo App Agency Earn Money — LH Talent Agency](https://lhtalentagency.com/blogs/how-poppo-app-agency-earn-money)
+- [Poppo Live Sub-Agent Commission 2026 — BitTopup News](https://news.bittopup.com/news/poppo-live-sub-agent-commission-2026-10-host-profit-guide)`,
     },
     {
       slug: "how-to-get-coins-on-poppo-live",
@@ -450,7 +483,16 @@ Pacotes maiores geralmente têm uma taxa melhor, então se você é do tipo que 
 
 Uma vez que suas moedas estão lá, elas estão prontas pra usar imediatamente. Entre em qualquer live, toque no ícone de presente, escolha algo e envie. O streamer provavelmente vai reagir. Esse é meio que o ponto todo.
 
-Ah, e: moedas não expiram. Então se você estocar e depois descobrir que tem vida fora do app, elas vão estar te esperando quando você voltar.`,
+Ah, e: moedas não expiram. Então se você estocar e depois descobrir que tem vida fora do app, elas vão estar te esperando quando você voltar.
+
+---
+
+## Fontes
+
+- [POPPO LIVE](https://www.poppolive.com/)
+- [How to Recharge Poppo Live Coins and Earn Free Coins Easily — EnjoyGM](https://www.enjoygm.com/blog/poppo-live/how-to-recharge-poppo-coins-free)
+- [Poppo Live Coins Guide: Earn, Gift & Save 30% on Bulk Packs Now — BitTopup News](https://news.bittopup.com/news/poppo-live-coins-guide-earn-gift-save-30-on-bulk-packs-now)
+- [Best Ways to Use Coins in Poppo Live — LootBar](https://lootbar.gg/blog/en/poppo-live-best-ways-to-use-coins.html)`,
     },
     {
       slug: "why-nobody-is-watching-your-stream",
@@ -523,7 +565,15 @@ A maioria das lives falha silenciosamente não porque a pessoa é chata, mas por
 
 A câmera não capta potencial. Ela capta o que tá realmente acontecendo na sala agora.
 
-Conserte as coisas pequenas primeiro. Energia, consistência, ganchos, silêncio. Acerte esses e o resto fica bem mais fácil.`,
+Conserte as coisas pequenas primeiro. Energia, consistência, ganchos, silêncio. Acerte esses e o resto fica bem mais fácil.
+
+---
+
+## Fontes
+
+- [POPPO LIVE](https://www.poppolive.com/)
+- [Top 5 Live Streaming Practices to Boost Viewer Engagement — TVStartup](https://tvstartup.com/5-essential-practices-for-successful-live-streaming-in-2025/)
+- [Creating a Stream Schedule That Builds Audience Loyalty — Modern Stoa](https://modernstoa.co/creating-a-stream-schedule-that-builds-audience-loyalty/)`,
     },
   ],
 };
