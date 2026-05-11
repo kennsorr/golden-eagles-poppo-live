@@ -159,8 +159,25 @@ export default async function IntroductionPage({
           </div>
         </div>
         <div className="rounded-3xl border border-amber-200/20 bg-gradient-to-br from-amber-400/20 via-slate-900/70 to-slate-900/40 p-8 shadow-lg shadow-black/30">
-          <p className="text-sm uppercase tracking-[0.2em] text-amber-200/80 whitespace-nowrap">
-            {t.hero.highlightLabel}
+          <p className="flex items-center gap-2 text-sm uppercase tracking-[0.2em] text-amber-200/80 whitespace-nowrap">
+            <span
+              className="notification-wiggle inline-flex h-5 w-5 items-center justify-center rounded-full border border-amber-200/30 bg-amber-300/10 text-amber-100 shadow-lg shadow-amber-400/10"
+              aria-hidden="true"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-3 w-3"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" />
+                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+              </svg>
+            </span>
+            <span>{t.hero.highlightLabel}</span>
           </p>
           <h2 className="mt-3 text-2xl font-semibold text-white">
             {highlightTitle}
