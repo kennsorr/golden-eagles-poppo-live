@@ -12,6 +12,7 @@ type CookieConsentProps = {
 };
 
 const STORAGE_KEY = "ge-cookie-consent";
+const CONSENT_CHANGE_EVENT = "ge-cookie-consent-change";
 
 export default function CookieConsent({
   locale,
@@ -27,7 +28,12 @@ export default function CookieConsent({
   }, []);
 
   function handleChoice(accepted: boolean) {
-    localStorage.setItem(STORAGE_KEY, accepted ? "accepted" : "declined");
+    const consent = accepted ? "accepted" : "declined";
+
+    localStorage.setItem(STORAGE_KEY, consent);
+    window.dispatchEvent(
+      new CustomEvent(CONSENT_CHANGE_EVENT, { detail: { consent } }),
+    );
     setVisible(false);
   }
 

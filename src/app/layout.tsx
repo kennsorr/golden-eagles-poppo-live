@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import { headers } from "next/headers";
-import { Suspense } from "react";
-import Analytics from "@/components/Analytics";
+import ConsentScripts from "@/components/ConsentScripts";
 import { getSiteUrl } from "@/lib/seo";
 import "./globals.css";
 
@@ -99,10 +97,21 @@ export default async function RootLayout({
     <html lang={lang === "pt-br" ? "pt-BR" : lang} suppressHydrationWarning>
       <head>
         <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3776862700552324"
-          crossOrigin="anonymous"
-        ></script>
+          id="google-consent-default"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                ad_storage: 'denied',
+                analytics_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                wait_for_update: 500
+              });
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -113,25 +122,7 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         {children}
-        {gaId ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="ga4" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}');
-              `}
-            </Script>
-            <Suspense fallback={null}>
-              <Analytics gaId={gaId} />
-            </Suspense>
-          </>
-        ) : null}
+        <ConsentScripts gaId={gaId} />
       </body>
     </html>
   );
