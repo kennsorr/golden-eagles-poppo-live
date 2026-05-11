@@ -44,6 +44,31 @@ export const copy: Record<
       blogBackToList: string;
     };
     footer: { tagline: string; linkText: string; linkUrl: string };
+    footerLinks: { privacy: string; terms: string; contact: string; about: string };
+    about: {
+      title: string;
+      description: string;
+      intro: string;
+      missionTitle: string;
+      missionBody: string;
+      whatWeDoTitle: string;
+      whatWeDoBody: string;
+      teamTitle: string;
+      teamBody: string;
+    };
+    contact: {
+      title: string;
+      description: string;
+      intro: string;
+      poppoTitle: string;
+      poppoBody: string;
+      emailTitle: string;
+      emailBody: string;
+    };
+    privacy: { title: string; description: string };
+    terms: { title: string; description: string };
+    notFound: { title: string; body: string; cta: string };
+    cookieConsent: { message: string; accept: string; decline: string };
   }
 > = {
   en: {
@@ -111,6 +136,50 @@ export const copy: Record<
       tagline: "Website created by ",
       linkText: "sorrell.info",
       linkUrl: "https://consulting.sorrell.info",
+    },
+    footerLinks: {
+      privacy: "Privacy Policy",
+      terms: "Terms of Service",
+      contact: "Contact",
+      about: "About",
+    },
+    about: {
+      title: "About Golden Eagles",
+      description: "Learn about Golden Eagles — a Poppo Live agency built for streamers, community, and fun.",
+      intro: "Golden Eagles is a Poppo Live agency built around one idea: streaming is better together. We support streamers with events, visibility, and a community that actually shows up.",
+      missionTitle: "Our Mission",
+      missionBody: "We exist to help Poppo Live streamers grow, connect, and have fun doing it. Whether you're new to streaming or looking for your next level, we provide the structure, events, and community to get you there.",
+      whatWeDoTitle: "What We Do",
+      whatWeDoBody: "We organize PK battles, community events, and streamer showcases. We help our members get discovered, build audiences, and stay consistent. We also run polls, a community blog, and a curated shop — all designed to keep the Golden Eagles family connected.",
+      teamTitle: "Our Team",
+      teamBody: "Meet the people who keep Golden Eagles running.",
+    },
+    contact: {
+      title: "Contact Us",
+      description: "Get in touch with the Golden Eagles team on Poppo Live or by email.",
+      intro: "Want to join Golden Eagles, ask a question, or just say hi? Here's how to reach us.",
+      poppoTitle: "Find Us on Poppo Live",
+      poppoBody: "The fastest way to connect is through our official Poppo Live profile. Tap the link below to find us in the app.",
+      emailTitle: "Send Us an Email",
+      emailBody: "For business inquiries, partnerships, or anything that needs a longer conversation.",
+    },
+    privacy: {
+      title: "Privacy Policy",
+      description: "Read the Golden Eagles privacy policy — how we collect, use, and protect your data.",
+    },
+    terms: {
+      title: "Terms of Service",
+      description: "Read the Golden Eagles terms of service for using our website.",
+    },
+    notFound: {
+      title: "Page Not Found",
+      body: "The page you're looking for doesn't exist or has been moved.",
+      cta: "Go Home",
+    },
+    cookieConsent: {
+      message: "We use cookies to improve your experience and serve personalized ads via Google AdSense.",
+      accept: "Accept",
+      decline: "Decline",
     },
   },
   "pt-br": {
@@ -184,6 +253,50 @@ export const copy: Record<
       tagline: "Site criado por ",
       linkText: "sorrell.info",
       linkUrl: "https://consulting.sorrell.info",
+    },
+    footerLinks: {
+      privacy: "Política de Privacidade",
+      terms: "Termos de Uso",
+      contact: "Contato",
+      about: "Sobre",
+    },
+    about: {
+      title: "Sobre a Golden Eagles",
+      description: "Conheça a Golden Eagles — uma agência Poppo Live feita para streamers, comunidade e diversão.",
+      intro: "Golden Eagles é uma agência do Poppo Live construída em torno de uma ideia: fazer lives é melhor junto. Apoiamos streamers com eventos, visibilidade e uma comunidade que realmente aparece.",
+      missionTitle: "Nossa Missão",
+      missionBody: "Existimos para ajudar streamers do Poppo Live a crescer, se conectar e se divertir fazendo isso. Seja você novo no streaming ou buscando o próximo nível, oferecemos estrutura, eventos e comunidade para te levar até lá.",
+      whatWeDoTitle: "O Que Fazemos",
+      whatWeDoBody: "Organizamos batalhas PK, eventos comunitários e showcases de streamers. Ajudamos nossos membros a serem descobertos, construir audiência e manter a consistência. Também temos enquetes, um blog comunitário e uma loja curada — tudo para manter a família Golden Eagles conectada.",
+      teamTitle: "Nosso Time",
+      teamBody: "Conheça as pessoas que mantêm a Golden Eagles funcionando.",
+    },
+    contact: {
+      title: "Fale Conosco",
+      description: "Entre em contato com a equipe Golden Eagles pelo Poppo Live ou por e-mail.",
+      intro: "Quer entrar na Golden Eagles, fazer uma pergunta ou só dar um oi? Veja como nos encontrar.",
+      poppoTitle: "Nos Encontre no Poppo Live",
+      poppoBody: "A maneira mais rápida de se conectar é pelo nosso perfil oficial no Poppo Live. Toque no link abaixo para nos encontrar no app.",
+      emailTitle: "Envie um E-mail",
+      emailBody: "Para consultas comerciais, parcerias ou qualquer coisa que precise de uma conversa mais longa.",
+    },
+    privacy: {
+      title: "Política de Privacidade",
+      description: "Leia a política de privacidade da Golden Eagles — como coletamos, usamos e protegemos seus dados.",
+    },
+    terms: {
+      title: "Termos de Uso",
+      description: "Leia os termos de uso da Golden Eagles para utilizar nosso site.",
+    },
+    notFound: {
+      title: "Página Não Encontrada",
+      body: "A página que você procura não existe ou foi movida.",
+      cta: "Ir para o Início",
+    },
+    cookieConsent: {
+      message: "Usamos cookies para melhorar sua experiência e exibir anúncios personalizados via Google AdSense.",
+      accept: "Aceitar",
+      decline: "Recusar",
     },
   },
 };

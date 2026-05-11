@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
+import CookieConsent from "@/components/CookieConsent";
+import NavigationProgress from "@/components/NavigationProgress";
 import PageTransition from "@/components/PageTransition";
 import SiteHeader from "@/components/SiteHeader";
 import SparkleBackground from "@/components/SparkleBackground";
@@ -49,6 +52,7 @@ export default async function LocaleLayout({
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
+      <NavigationProgress />
       <SparkleBackground />
       <SiteHeader
         locale={safeLocale}
@@ -64,18 +68,43 @@ export default async function LocaleLayout({
         <PageTransition>{children}</PageTransition>
       </main>
       <footer className="relative border-t border-white/10 py-8">
-        <div className="mx-auto w-full max-w-6xl px-6 text-sm font-bold text-white/60">
-          {t.footer.tagline}
-          <a
-            href={t.footer.linkUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="uppercase text-amber-200/90 underline hover:text-amber-200"
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-6">
+          <nav
+            className="flex flex-wrap gap-x-5 gap-y-1 text-xs text-white/40"
+            aria-label="Footer"
           >
-            {t.footer.linkText}
-          </a>
+            <Link href={`/${safeLocale}/about`} className="transition hover:text-white/60">
+              {t.footerLinks.about}
+            </Link>
+            <Link href={`/${safeLocale}/contact`} className="transition hover:text-white/60">
+              {t.footerLinks.contact}
+            </Link>
+            <Link href={`/${safeLocale}/privacy-policy`} className="transition hover:text-white/60">
+              {t.footerLinks.privacy}
+            </Link>
+            <Link href={`/${safeLocale}/terms`} className="transition hover:text-white/60">
+              {t.footerLinks.terms}
+            </Link>
+          </nav>
+          <p className="text-sm font-bold text-white/60">
+            {t.footer.tagline}
+            <a
+              href={t.footer.linkUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="uppercase text-amber-200/90 underline hover:text-amber-200"
+            >
+              {t.footer.linkText}
+            </a>
+          </p>
         </div>
       </footer>
+      <CookieConsent
+        locale={safeLocale}
+        message={t.cookieConsent.message}
+        acceptLabel={t.cookieConsent.accept}
+        declineLabel={t.cookieConsent.decline}
+      />
     </div>
   );
 }

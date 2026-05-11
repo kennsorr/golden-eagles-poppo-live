@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import TeamMemberCard from "@/components/TeamMemberCard";
 import { getTeamMembers } from "@/data/team";
 import { copy } from "@/lib/copy";
-import { Locale } from "@/lib/i18n";
+import { isLocale, Locale } from "@/lib/i18n";
 import { buildAlternates } from "@/lib/seo";
 import {
   fetchActivePolls,
@@ -14,9 +15,12 @@ import {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  if (!isLocale(locale)) {
+    return {};
+  }
   const t = copy[locale];
 
   return {
@@ -33,9 +37,12 @@ export async function generateMetadata({
 export default async function IntroductionPage({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  if (!isLocale(locale)) {
+    notFound();
+  }
   const t = copy[locale];
   const [members, activePolls, upcomingEvents, recentShopItems] =
     await Promise.all([

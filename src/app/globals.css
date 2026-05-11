@@ -513,3 +513,222 @@ body {
   }
 }
 
+.eagle-loader {
+  position: relative;
+  width: 9rem;
+  height: 9rem;
+  display: grid;
+  place-items: center;
+  isolation: isolate;
+}
+
+.eagle-loader__halo {
+  position: absolute;
+  inset: -28%;
+  border-radius: 9999px;
+  background: radial-gradient(
+    closest-side,
+    rgba(251, 191, 36, 0.45),
+    rgba(244, 114, 182, 0.18) 55%,
+    transparent 78%
+  );
+  filter: blur(8px);
+  animation: eagleHaloPulse 2.4s ease-in-out infinite;
+  z-index: 0;
+}
+
+.eagle-loader__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  padding: 2px;
+  background: conic-gradient(
+    from 0deg,
+    rgba(251, 191, 36, 0) 0deg,
+    rgba(251, 191, 36, 0.95) 110deg,
+    rgba(244, 114, 182, 0.75) 210deg,
+    rgba(251, 191, 36, 0) 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: eagleRingSpin 1.8s linear infinite;
+  z-index: 1;
+}
+
+.eagle-loader__bird {
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(251, 191, 36, 0.5));
+  animation: eagleSoar 2.6s ease-in-out infinite;
+  transform-origin: center 65%;
+  z-index: 2;
+}
+
+.eagle-loader__sparkle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 9999px;
+  background: rgba(254, 243, 199, 0.95);
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.9);
+  animation: eagleOrbit 3.6s linear infinite;
+  z-index: 1;
+}
+
+.eagle-loader__sparkle--a {
+  animation-delay: 0s;
+}
+
+.eagle-loader__sparkle--b {
+  animation-delay: -1.2s;
+}
+
+.eagle-loader__sparkle--c {
+  animation-delay: -2.4s;
+}
+
+.eagle-loader__text {
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: transparent;
+  background: linear-gradient(
+    90deg,
+    rgba(254, 243, 199, 0.35),
+    rgba(254, 243, 199, 1),
+    rgba(254, 243, 199, 0.35)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: eagleShimmer 2.2s ease-in-out infinite;
+}
+
+@keyframes eagleSoar {
+  0% {
+    transform: translateY(0) rotate(-2deg) scale(1);
+  }
+  35% {
+    transform: translateY(-6px) rotate(1.5deg) scale(1.02);
+  }
+  60% {
+    transform: translateY(-3px) rotate(-1deg) scale(1.01);
+  }
+  100% {
+    transform: translateY(0) rotate(-2deg) scale(1);
+  }
+}
+
+@keyframes eagleHaloPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes eagleRingSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes eagleShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes eagleOrbit {
+  0% {
+    transform: rotate(0deg) translateX(4.5rem) rotate(0deg) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(360deg) translateX(4.5rem) rotate(-360deg) scale(0.6);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eagle-loader__bird,
+  .eagle-loader__halo,
+  .eagle-loader__ring,
+  .eagle-loader__sparkle,
+  .eagle-loader__text {
+    animation-duration: 8s;
+  }
+}
+
+.nav-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.nav-progress--active {
+  opacity: 1;
+}
+
+.nav-progress__bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(251, 191, 36, 0) 0%,
+    rgba(251, 191, 36, 0.95) 35%,
+    rgba(244, 114, 182, 0.95) 70%,
+    rgba(251, 191, 36, 0) 100%
+  );
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
+  transform: translateX(-100%);
+}
+
+.nav-progress--active .nav-progress__bar {
+  animation: navProgressSlide 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes navProgressSlide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-progress--active .nav-progress__bar {
+    animation: none;
+    transform: translateX(0);
+    opacity: 0.8;
+  }
+}
+
