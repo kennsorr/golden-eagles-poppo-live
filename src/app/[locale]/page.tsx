@@ -71,7 +71,7 @@ export default async function IntroductionPage({
     highlightBody = t.hero.highlightBlog.body;
     highlightCta = {
       label: t.hero.highlightBlog.cta,
-      href: `/${locale}/blog/${recentBlogPost.slug}`,
+      href: `/${locale}/blog`,
     };
   } else if (recentShopItems.length > 0) {
     highlightTitle = t.hero.highlightShop.title;
