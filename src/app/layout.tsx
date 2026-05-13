@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { headers } from "next/headers";
 import ConsentScripts from "@/components/ConsentScripts";
+import { EAGLE_LOADER_LOGO_SRC } from "@/lib/eagleLoaderAsset";
 import { getSiteUrl } from "@/lib/seo";
 import "./globals.css";
 
@@ -96,6 +97,7 @@ export default async function RootLayout({
   return (
     <html lang={lang === "pt-br" ? "pt-BR" : lang} suppressHydrationWarning>
       <head>
+        <link rel="preload" href={EAGLE_LOADER_LOGO_SRC} as="image" />
         <script
           id="google-consent-default"
           dangerouslySetInnerHTML={{
@@ -121,6 +123,17 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-slate-950 text-white antialiased`}
         suppressHydrationWarning
       >
+        <img
+          src={EAGLE_LOADER_LOGO_SRC}
+          alt=""
+          width={96}
+          height={96}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          aria-hidden
+          className="pointer-events-none fixed left-0 top-0 -z-10 size-24 opacity-0"
+        />
         {children}
         <ConsentScripts gaId={gaId} />
       </body>

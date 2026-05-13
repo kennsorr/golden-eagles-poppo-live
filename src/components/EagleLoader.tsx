@@ -1,3 +1,5 @@
+import { EAGLE_LOADER_LOGO_SRC } from "@/lib/eagleLoaderAsset";
+
 export default function EagleLoader() {
   return (
     <div
@@ -22,9 +24,14 @@ export default function EagleLoader() {
           aria-hidden
         />
         <img
-          src="/images/golden-eagles-logo-s.png"
+          src={EAGLE_LOADER_LOGO_SRC}
           alt=""
+          width={96}
+          height={96}
           className="eagle-loader__bird"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           aria-hidden
         />
       </div>
